@@ -12,7 +12,7 @@ The velocity verlet method is used to update the positions at each
 time instance.
  
 
-Compile gcc -g -Wall -O3 -lm -o md-serial md-serial.c 
+Compile gcc -g -Wall -O3 -lm -o md_serial md_serial.c 
 
 Frederick Fung Apr 2022
 
@@ -60,7 +60,7 @@ Mo create_molecular(int id, double r_x, double r_y, double mass,
      m->v_y = v_y;
      m->f_x = f_x;
      m->f_y = f_y;
-   printf("id %d\n", id);
+ //  printf("id %d\n", id);
      return m;
 
 
@@ -172,10 +172,12 @@ void verlet_method(Mo *MD, int ts, double step){
         double r_old_x, r_old_y, r_new_x, r_new_y;
 
         if (i == 0){
-            double r_old_x = MD[i]->r_x;
-            double r_old_y = MD[i]->r_y;
+            r_old_x = MD[i]->r_x;
+            r_old_y = MD[i]->r_y;
         }
         /* under assumption mass = 1, a = f_x */ 
+
+        printf("r_x %f\n ", MD[i]->r_x);
         r_new_x = 2.0 * MD[i]->r_x - r_old_x + step * step * MD[i]->f_x ;
 
         r_new_y = 2.0 * MD[i]->r_y - r_old_y + step * step * MD[i]->f_y ;
@@ -191,6 +193,7 @@ void verlet_method(Mo *MD, int ts, double step){
         MD[i]->r_x = r_new_x;
 
         MD[i]->r_y = r_new_y;
+         
      }
 
    }
