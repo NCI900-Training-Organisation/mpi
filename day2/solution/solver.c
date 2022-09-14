@@ -36,15 +36,17 @@ Frederick Fung 2022
 double local_L2_residual(const int *ptr_to_rows, int mesh_size, double space, const double *ptr_submesh, const double *ptr_subrhs)
 {
     
-    /* discrete L2 norm of the residual by a given approximation */
+    /* l2 norm of residual by a given approximation */
     double residual = 0.0f;
 
       for (int i = 1; i< *ptr_to_rows -1; i++){
         for (int j = 1; j< mesh_size-1; j++){
+
              
              double diff =  ( 4* *(ptr_submesh +  (i * mesh_size) +j ) - *(ptr_submesh + ((i-1)*mesh_size) +j) - *(ptr_submesh +((i+1)*mesh_size)+j)\
                              - *(ptr_submesh + (i *mesh_size) + j-1 ) - *(ptr_submesh + (i*mesh_size) +j +1)) / (space *space )- *(ptr_subrhs + i*mesh_size +j);
-             diff = space *space * diff;
+      
+             diff = space*space*diff;
              residual += pow(diff, 2);
               
         }
@@ -96,9 +98,14 @@ void Jacobi_top(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *p
 {
     
     int i = *ptr_to_rows - 2;
+
     for (int j = 1; j< mesh_size-1; j++ )
+               
          *(ptr_submesh_new + i *mesh_size +j) =  space * space * (*(ptr_rhs +i * mesh_size +j)) *0.25 + ( *(ptr_submesh + ((i-1)* mesh_size) +j) \
-                                                + *(ptr_submesh + ((i+1)*mesh_size) +j) +  *(ptr_submesh + (i *mesh_size) +j -1) + *(ptr_submesh + (i*mesh_size) +j+1) ) * 0.25;                                                      
+                                                + *(ptr_submesh + ((i+1)*mesh_size) +j) +  *(ptr_submesh + (i *mesh_size) +j -1) + *(ptr_submesh + (i*mesh_size) +j+1) ) * 0.25;
+
+
+                                                       
 }
 
 

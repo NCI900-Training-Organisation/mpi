@@ -11,9 +11,9 @@ method and the resulting linear system is solved by choices of Jacobi
 or Gauss-Seidel.
 
 
-Compile:  mpicc -g -Wall -O3 -lm -o laplace_mpi_nonblocking laplace_mpi_nonblocking.c 
+Compile:  mpicc -g -Wall -O3 -lm -o fd_laplace-mpi_persistent fd_laplace-mpi_persistent.c 
 
-Usage:  mpirun -np 4 ./fd_laplace-mpi size tolerance method
+Usage:  mpirun -np 4 ./fdd_laplace-mpi size tolerance method
 
 Produced for NCI Training. 
 
@@ -80,16 +80,17 @@ if (rank == 0){
     MPI_Bcast(&mesh_size, 1, arg, 0, world);
      
     if ((strcmp(method, "Jacobi") == 0)){
-        printf("%s METHOD IS IN USE   \n ", method); }
+        printf("%s METHOD IS IN USE   \n ", method); 
+    }
     else {    
-        printf( "Not a valid method\n");
-        MPI_Finalize();
+        printf("Not a valid method\n");
+        MPI_Abort(world, EXIT_FAILURE);
         exit(1);
          }
     }
     else {
         printf("Usage: %s [size] [tolerance] [method] \n", argv[0]);
-        MPI_Finalize();
+        MPI_Abort(world, EXIT_FAILURE);
         exit(1);
     }
 }
@@ -137,10 +138,11 @@ double (*subrhs)[mesh_size] = malloc(sizeof *subrhs * *ptr_rows);
 /* setup mesh config */
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
+
 int highertag=1, lowertag=2;
 
-MPI_Status bnd_status[4];
-MPI_Request bnd_requests[4];
+MPI_Status top_bnd_status[2], bottom_bnd_status[2];
+MPI_Request top_bnd_requests[2],  bottom_bnd_requests[2];
 int index, top_flag, bottom_flag;
 
 /* Assign topology to the ranks */
@@ -156,21 +158,56 @@ while (iter< max_iter)
     double residual,tot_res; 
 
     /* communicate to the higher rank process */
-    MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &bnd_requests[0]);
-    MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &bnd_requests[1]);
+    MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &top_bnd_requests[0]);
+    MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &bottom_bnd_requests[1]);
 
     /* communicate to the lower rank process */
-    MPI_Irecv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD, &bnd_requests[2]);
-    MPI_Isend(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &bnd_requests[3]);
+    MPI_Irecv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD, &bottom_bnd_requests[0]);
+    MPI_Isend(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &top_bnd_requests[1]);
 
     /* Jacobi Interior */
     Jacobi_int(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
 
-    /* Twait on both top and bottom layers to complete comm */
-    MPI_Waitall(4, bnd_requests, bnd_status);
+    /* Test on either the top or bottom layer */
+    if ( (MPI_Testall(2, top_bnd_requests, &top_flag, top_bnd_status) > 0) || (MPI_Testall(2, bottom_bnd_requests, &bottom_flag, bottom_bnd_status) > 0))
+    {
+       MPI_Abort(MPI_COMM_WORLD, 1);
+    }
 
-    Jacobi_top(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
+    /* if the top layer is ready */
+    if (top_flag){
+        /* perform jacobi on the top bnd */
+        Jacobi_top(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
+
+    /* if the the bottom layer is ready */
+    if (bottom_flag){
+    /* perform jacobi on the bottom bnd */
     Jacobi_bottom(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
+    }
+    
+    /* if the bottom layer is yet ready */
+    else{
+        /* wait on the bottom layer */
+        MPI_Waitall(2, bottom_bnd_requests, bottom_bnd_status);
+        Jacobi_bottom(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);        
+        }
+    }
+    /* if the top layer is yet ready but the buttom is */
+    else if (bottom_flag){
+        /* perform jacobi bottom ready */
+        Jacobi_bottom(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
+        /* wait on the top layer */
+        MPI_Waitall(2, top_bnd_requests, top_bnd_status);
+        Jacobi_top(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
+        }
+    /* if neither of the top and bottom is ready, then wait on both */
+    else {
+        MPI_Waitall(2, bottom_bnd_requests, bottom_bnd_status);
+        Jacobi_bottom(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
+        MPI_Waitall(2, top_bnd_requests, top_bnd_status);
+        Jacobi_top(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
+    }
+
 
     /* swap current with new approx */
     for (int i = 1; i< *ptr_rows-1 ; i++){
@@ -179,16 +216,25 @@ while (iter< max_iter)
         }     
     }
 
-    residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, world);
-    if (rank == 0){
-        tot_res = sqrt(tot_res);  
-        printf("Residual  %f after iter %d \n",  tot_res, iter); 
-        }
-}
-   
-MPI_Status status;
 
+    residual = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
+    if (rank ==0){
+        double list_residual[cells];
+        double tot_res = 0;
+        MPI_Gather(&residual, 1, MPI_DOUBLE, list_residual, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        for (int i=0; i<cells; i++){
+            tot_res +=list_residual[i];
+        }
+        tot_res = sqrt(tot_res);
+    printf("Residual1  %f\n",  tot_res); 
+    }
+
+    else{
+    MPI_Gather(&residual, 1, MPI_DOUBLE, NULL, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD );
+    }
+}
+
+MPI_Status status;
 MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD);
 MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &status);
 MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD);
@@ -205,14 +251,14 @@ residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrh
        tot_res = sqrt(tot_res);
         
        printf("Residual1  %f\n",  tot_res); }
-//MPI_Win_unlock_all(upper_win);
-//MPI_Win_unlock_all(lower_win);
-
-
 
 MPI_Finalize();
 free(submesh);
 free(submesh_new);
 free(subrhs);
+
+printf("size %d", cells);
+
+
 
 }

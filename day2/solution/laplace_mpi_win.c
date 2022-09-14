@@ -1,5 +1,5 @@
 /* =================================================================
-laplace_mpi_blocking.c
+fd_laplace-serial.c
 
 Solve a model 2D Poisson equaton with Dirichlet boundary condition.
 
@@ -11,9 +11,9 @@ method and the resulting linear system is solved by choices of Jacobi
 or Gauss-Seidel.
 
 
-Compile:  mpicc -g -Wall -O3 -lm -o laplace_mpi_blocking laplace_mpi_blocking.c  mesh.c solver.c
+Compile:  mpicc -g -Wall -O3 -lm -o laplace_mpi_win laplace_mpi_win.c 
 
-Usage:  mpirun -np 4 ./fdd_laplace-mpi size tolerance method
+Usage:  mpirun -np 4 ./fd_laplace-mpi size tolerance method
 
 Produced for NCI Training. 
 
@@ -27,6 +27,9 @@ Frederick Fung 2022
 #include<mpi.h>
 #include "mesh.h"
 #include "solver.h"
+
+#define MPIIO
+//#define MPI_DEBUG
 
 int main(int argc, char *argv[]){
 
@@ -99,7 +102,7 @@ else {
 /* grid spacing */
 space = (double) 1 / (mesh_size-1);
 
-/* number of interior rows in each process */
+/* number of interior rows in each cell */
 int int_rows = (mesh_size -2) / cells ;
 
 /* calc the remaining rows */
@@ -108,36 +111,46 @@ int extra_rows = (mesh_size -2 ) - int_rows * cells;
 /* total number of rows per cell, adding top and bottom ghost rows */
 int rows = int_rows + 2;
 
-if (rows <= 3){
-    printf("Illegal size");
-    MPI_Finalize();
-    exit(1); 
-}
+/* add extra rows */
+int rows_top = rows + extra_rows; /* one for ghost, one for bnd */
 
-/* add top extra rows */
-int rows_top = rows + extra_rows; 
 int *ptr_rows = NULL;
 
 /* assign extra rows to the last cell */ 
 if (rank == (cells - 1)) ptr_rows = &rows_top;
+
 else ptr_rows = &rows;
+
+printf("ptr size %d\n", *ptr_rows);
+
+printf("size %d\n", rows);
+
+if (rows <= 3) MPI_Abort(MPI_COMM_WORLD, 1); /* add error handling */ 
+
 
 /* alloc mem for meshes held in each cell */
 double (*submesh)[mesh_size] = malloc(sizeof *submesh * *ptr_rows);
 
-/* jacobi method requires to store a copy for updates */ 
+/* jacobi method requires to store updates */ 
 double (*submesh_new)[mesh_size] = malloc(sizeof *submesh_new * *ptr_rows);
 
 /* alloc mem for rhs held in each cell */
 double (*subrhs)[mesh_size] = malloc(sizeof *subrhs * *ptr_rows);
 
-/* setup mesh config */
+
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
 
-int highertag=1, lowertag=2;
+/* window object for top and bottom bnd data */
+MPI_Win bnd_win;
 
-MPI_Status status;
+/* allocate mem for the win obj */
+double *bnd;
+MPI_Alloc_mem(2*sizeof(double )*mesh_size, MPI_INFO_NULL, &bnd);
+
+/* create local memory window */
+MPI_Win_create(bnd, 2*mesh_size *sizeof(double), sizeof(double),\
+               MPI_INFO_NULL, MPI_COMM_WORLD, &bnd_win);
 
 
 /* Assign topology to the ranks */
@@ -146,43 +159,58 @@ if (upper >= cells) upper = MPI_PROC_NULL;
 int lower = rank -1;
 if (lower < 0) lower = MPI_PROC_NULL;
 
-unsigned iter  = 0; 
-while (iter< max_iter)
+unsigned iter = 0;
+while (iter<max_iter)
 {
     iter+=1;
-    double residual,tot_res;
+    double residual, tot_res;
+    
+    /* as the target, sync with the origin process after local access completes */
+    MPI_Win_fence(0, bnd_win);
 
-    /* communicate to the higher rank process */
-    MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &status);
-    MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD);
+    MPI_Put(submesh[1], mesh_size, MPI_DOUBLE, lower, 0, mesh_size, MPI_DOUBLE, bnd_win);
+    MPI_Put(submesh[*ptr_rows - 2], mesh_size, MPI_DOUBLE, upper, mesh_size, mesh_size, MPI_DOUBLE, bnd_win);   
 
-    #ifdef MPI_DEBUG
-            printf("MPI process %d received value from rank %d, with tag %d and error code %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG, status.MPI_ERROR);
+    /* as the origin, sync with the target to ensure that put completes */
+    MPI_Win_fence(0, bnd_win);
 
-    #endif
-    /* communicate to the lower rank process */
-    MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD, &status);
-    MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD);
-
-    #ifdef MPI_DEBUG
-            printf("MPI process %d received value from rank %d, with tag %d and error code %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG, status.MPI_ERROR);
-    #endif
+    /* local window access */
+    if (rank > 0 && rank < (cells -1)){
+        for (int i=0; i< mesh_size; i++){
+            submesh[0][i] = bnd[mesh_size+i]; /* bottom */
+            submesh[*ptr_rows-1][i] = bnd[i]; /* top */            
+        }
+    }
+    else if (rank ==0 ){ /* bottom rank only updates its top full row */
+        for (int i = 0; i< mesh_size; i++ ){
+            submesh[*ptr_rows-1][i] = bnd[i];
+        }
+    }
+    else if (rank == (cells -1) ){ /* top rank only updates its bottom full row */ 
+        for (int i = 0; i <mesh_size; i++){
+            submesh[0][i] = bnd[mesh_size+i];
+        }
+    }
 
     Jacobi(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
-     
-    residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, world);
-    if (rank == 0){
-        tot_res = sqrt(tot_res);  
-        printf("Residual  %f after iter %d \n",  tot_res, iter); 
-        }
+            residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
+    
+    MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+   if (rank == 0){
+       tot_res = sqrt(tot_res);
+       printf("Residual1  %f\n",  tot_res); }
 }
 
-/* sync after solving the problem on each cell */
+int uppertag=1, lowertag=2;
+
+MPI_Status status;
+
+
+  /* sync after solving the problem on each cell */
 MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD);
 MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &status);
-MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &status);
+MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, uppertag, MPI_COMM_WORLD);
+MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, uppertag, MPI_COMM_WORLD, &status);
 
 /* calc residual */
 double residual, tot_res;
@@ -190,12 +218,16 @@ residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrh
     
 
 /* collecting residuals and returns to rank 0 */
-MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);   
+MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+   
 if (rank == 0){
-    tot_res = sqrt(tot_res);        
-    printf("Residual1  %f\n",  tot_res); 
-    }
-    
+
+    tot_res = sqrt(tot_res);
+        
+    printf("Residual1  %f\n",  tot_res); }
+
+MPI_Win_free(&bnd_win);
+
 
 
 MPI_Finalize();
@@ -205,5 +237,4 @@ free(subrhs);
 
 
 }
-
 
