@@ -1,5 +1,5 @@
 /* =================================================================
-laplace_mpi_persistent.c
+fd_laplace-serial.c
 
 Solve a model 2D Poisson equaton with Dirichlet boundary condition.
 
@@ -165,7 +165,13 @@ int lower = rank -1;
 if (lower < 0) lower = MPI_PROC_NULL;
 
 /* communicate to the higher rank process */
-#TODO: use MPI_Recv_init and MPI_Send_init to initialise the communication requests
+MPI_Recv_init(submesh[*ptr_rows-1], mesh_size, MPI_DOUBLE, higher, highertag, world, &top_bnd_requests[0]);
+MPI_Send_init(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, world, &bottom_bnd_requests[1]);
+
+/* communicate to the lower rank process */
+MPI_Recv_init(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, world, &bottom_bnd_requests[0]);
+MPI_Send_init(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, higher, lowertag, world, &top_bnd_requests[1]);
+
 unsigned iter  = 0; 
 while (iter< max_iter)
 { 
@@ -173,7 +179,8 @@ while (iter< max_iter)
     iter+=1;
     double residual,tot_res; 
     /* start the communications */
-    #TODO: use MPI_Startall to start the communication
+    MPI_Startall(2, bottom_bnd_requests);
+    MPI_Startall(2, top_bnd_requests);
 
     /* overlapping the communication with jacobi interior computation*/
     Jacobi_int(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
@@ -236,7 +243,8 @@ if (rank == 0){
 }
 
    
-#Todo: use MPI_Request_free to free the requests from persistent calls
+MPI_Request_free(bottom_bnd_requests);
+MPI_Request_free(top_bnd_requests);
 
 MPI_Status status;
 
