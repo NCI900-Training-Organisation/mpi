@@ -116,7 +116,7 @@ if (rows <= 3){
     printf("Illegal size");
     MPI_Finalize();
     exit(1); 
-}
+} 
 
 /* add top extra rows */
 int rows_top = rows + extra_rows; 

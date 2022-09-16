@@ -163,7 +163,12 @@ while (iter< max_iter)
             printf("MPI process %d received value from rank %d, with tag %d and error code %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG, status.MPI_ERROR);
     #endif
     /* communicate to the lower rank process */
-    #TODO: use MPI_Recv and MPI_Send to update the bottom row of ghost nodes.
+    MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD, &status);
+    MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD);
+
+    #ifdef MPI_DEBUG
+            printf("MPI process %d received value from rank %d, with tag %d and error code %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG, status.MPI_ERROR);
+    #endif
 
 
     Jacobi(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);

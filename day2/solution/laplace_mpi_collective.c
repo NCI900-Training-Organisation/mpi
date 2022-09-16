@@ -106,8 +106,8 @@ space = (double) 1 / (mesh_size-1);
 /* number of interior rows in each process */
 int int_rows = (mesh_size -2) / cells ;
 
-/* calc the remaining rows */
-int extra_rows = (mesh_size -2 ) - int_rows * cells;
+/* calc the remaining interior rows */
+int extra_int_rows = (mesh_size -2 ) - int_rows * cells;
 
 /* total number of rows per cell, adding top and bottom ghost rows */
 int rows = int_rows + 2;
@@ -119,12 +119,13 @@ if (rows <= 3){
 }
 
 /* add top extra rows */
-int rows_top = rows + extra_rows; 
+int rows_top = rows + extra_int_rows; 
 int *ptr_rows = NULL;
 
 /* assign extra rows to the last cell */ 
 if (rank == (cells - 1)) ptr_rows = &rows_top;
 else ptr_rows = &rows;
+printf("rows %d rank %d \n", int_rows, rank);
 
 /* alloc mem for meshes held in each cell */
 double (*submesh)[mesh_size] = malloc(sizeof *submesh * *ptr_rows);
