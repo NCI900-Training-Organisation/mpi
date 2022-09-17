@@ -28,7 +28,8 @@ Frederick Fung 2022
 #include "mesh.h"
 #include "solver.h"
 
-#define MPIIO
+//#define IO
+//#define MPIIO
 //#define MPI_DEBUG
 
 int main(int argc, char *argv[]){
@@ -137,9 +138,11 @@ double (*subrhs)[mesh_size] = malloc(sizeof *subrhs * *ptr_rows);
 /* setup mesh config */
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
+/* start timing MPI program */
+double start_t, end_t, mpi_t;
+start_t = MPI_Wtime();
 
 int highertag=1, lowertag=2;
-
 MPI_Status status;
 
 
@@ -181,92 +184,16 @@ while (iter< max_iter)
         }
 }
 
-/* sync after solving the problem on each cell */
-MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &status);
-MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &status);
+end_t =MPI_Wtime();
+mpi_t = end_t-start_t;
+if (rank ==0){
 
-/* calc residual */
-double residual, tot_res;
-residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    
+FILE *fp;
+fp= fopen("blocking-timer.txt", "a+");
+fprintf(fp, "%f\n", mpi_t);
 
-/* collecting residuals and returns to rank 0 */
-MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-   
-if (rank == 0){
-
-    tot_res = sqrt(tot_res);
-        
-    printf("Residual1  %f\n",  tot_res); }
-    
-/* Output data */
-char file_name[20];
-
-#ifndef MPIIO
-sprintf(file_name, "laplace-soln-rank-%d", rank);
-FILE *fp = fopen(file_name, "w");
-for (int i = 0; i<*ptr_to_rows; i++){
-    for (int j = 0; j<mesh_size; j++){
-        fwrite(&submesh[i][j], sizeof(double), 1, fp);
-    }
-}
 fclose(fp);
-#endif 
-
-
-#ifdef MPIIO
-sprintf(file_name, "laplace-soln-whole");
-
-MPI_File fp;
-MPI_Offset offset; 
-MPI_Status IO_status;
-MPI_File_open(MPI_COMM_WORLD, file_name, MPI_MODE_CREATE|MPI_MODE_WRONLY, MPI_INFO_NULL, &fp);
-int count, w_count ;
-
-if (rank ==(cells -1)){
-
-    count = mesh_size * (*ptr_rows -1);
-    offset=  (mesh_size * (int_rows +1 )) * sizeof(double) + (rank-1)*(mesh_size * int_rows) * sizeof(double);
-    MPI_File_write_at(fp, offset, &submesh[1][0], count, MPI_DOUBLE, &IO_status );
-
-    #ifdef MPI_DEBUG
-    MPI_Get_count(&IO_status, MPI_DOUBLE, &w_count);
-    printf("w_count for cell %d is %d from offset %lld\n", rank, w_count, offset);
-    #endif
-
 }
-
-else if (rank == 0 ) {
-
-    count =  mesh_size * (*ptr_rows -1);
-    offset = 0;
-    MPI_File_write_at(fp, offset, &submesh[0][0], count, MPI_DOUBLE, &IO_status);
-
-
-    #ifdef MPI_DEBUG
-    MPI_Get_count(&IO_status, MPI_DOUBLE, &w_count);
-    printf("w_count for cell %d is %d from offset %lld\n", rank, w_count, offset);
-    #endif 
-}
-
-else{
-
-    count = (mesh_size) * int_rows; /* count number of full node */
-    offset =  (mesh_size * (*ptr_rows -1 )) * sizeof(double) + (rank-1)*(mesh_size * (*ptr_rows -2 )) * sizeof(double);
-    MPI_File_write_at(fp, offset, &submesh[1][0], count, MPI_DOUBLE, &IO_status );
-
-    #ifdef MPI_DEBUG
-    MPI_Get_count(&IO_status, MPI_DOUBLE, &w_count);
-    printf("w_count for cell %d is %d from offset %lld\n", rank, w_count, offset);
-    #endif
-}
-
-MPI_File_close(&fp);
-#endif
-
-
 MPI_Finalize();
 free(submesh);
 free(submesh_new);

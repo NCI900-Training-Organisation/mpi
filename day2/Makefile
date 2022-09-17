@@ -1,5 +1,6 @@
 CC:=mpicc
-CFLAGS:=-g -Wall -O3 -lm
+CFLAGS:=-g -Wall -O3 
+CLIBS:= -lmpiP -lm -lbfd -liberty -lunwind
 
 win: laplace_mpi_win.c mesh.c solver.c
 	${CC} ${CFLAGS} -o laplace_mpi_win laplace_mpi_win.c mesh.c solver.c
@@ -9,6 +10,8 @@ collective: laplace_mpi_win.c mesh.c solver.c
 
 io: laplace_mpi_io.c mesh.c solver.c
 	${CC} ${CFLAGS} -o laplace_mpi_io laplace_mpi_io.c mesh.c solver.c
-	
+
+winP: laplace_mpi_win.c mesh.c solver.c 
+	${CC} ${CFLAGS} -o laplace_mpiP_win laplace_mpi_win.c mesh.c solver.c $(CLIBS)
 clean:
 	rm -f *.o laplace_mpi_win

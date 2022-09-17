@@ -1,5 +1,5 @@
 /* =================================================================
-fd_laplace-serial.c
+laplace_mpi_nonblocking.c
 
 Solve a model 2D Poisson equaton with Dirichlet boundary condition.
 
@@ -11,9 +11,10 @@ method and the resulting linear system is solved by choices of Jacobi
 or Gauss-Seidel.
 
 
-Compile:  mpicc -g -Wall -O3 -lm -o fd_laplace-mpi_nonblocking fd_laplace-mpi_nonblocking.c 
+Compile:  mpicc -g -Wall -O3 -lm -o laplace_mpi_nonblocking laplace-mpi_nonblocking.c 
+        mesh.c solver.c
 
-Usage:  mpirun -np 4 ./fd_laplace-mpi size tolerance method
+Usage:  mpirun -np 4 ./laplace_mpi_nonblocking size tolerance method
 
 Produced for NCI Training. 
 
@@ -28,7 +29,7 @@ Frederick Fung 2022
 #include "mesh.h"
 #include "solver.h"
 
-#define MPIIO
+//#define MPIIO
 //#define MPI_DEBUG
 
 int main(int argc, char *argv[]){
@@ -38,9 +39,7 @@ MPI_Init(&argc, &argv);
 
 MPI_Comm world = MPI_COMM_WORLD;
 MPI_Comm_rank(world, &rank);
-printf("rank init %d\n", rank);
 MPI_Comm_size(world, &cells);
-printf("size init %d\n", cells);
 
 int mesh_size, max_iter; 
 
@@ -137,11 +136,16 @@ double (*subrhs)[mesh_size] = malloc(sizeof *subrhs * *ptr_rows);
 /* setup mesh config */
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
+
+/* start timing MPI program */
+double start_t, end_t, mpi_t;
+start_t = MPI_Wtime();
+
 int highertag=1, lowertag=2;
 
 MPI_Status top_bnd_status[2], bottom_bnd_status[2];
 MPI_Request top_bnd_requests[2],  bottom_bnd_requests[2];
-int index, top_flag, bottom_flag;
+int top_flag, bottom_flag;
 
 /* Assign topology to the ranks */
 int upper = rank +1;
@@ -154,7 +158,7 @@ while (iter< max_iter)
 {
     iter+=1;
     double residual,tot_res; 
-
+   
     /* communicate to the higher rank process */
     MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &top_bnd_requests[0]);
     MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &bottom_bnd_requests[1]);
@@ -206,7 +210,6 @@ while (iter< max_iter)
         Jacobi_top(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
     }
 
-
     /* swap current with new approx */
     for (int i = 1; i< *ptr_rows-1 ; i++){
         for ( int j = 1; j< mesh_size-1; j++){
@@ -219,31 +222,19 @@ while (iter< max_iter)
     if (rank == 0){
         tot_res = sqrt(tot_res);  
         printf("Residual  %f after iter %d \n",  tot_res, iter); 
-        }
+    }
 }
-   
-MPI_Status status;
 
-MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &status);
-MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &status);
+end_t =MPI_Wtime();
+mpi_t = end_t-start_t;
+if (rank ==0){
 
-double residual, tot_res;
-residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    
-   
-   MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-   //printf("Reduce");
-   if (rank == 0){
+FILE *fp;
+fp= fopen("nonblocking-timer.txt", "a+");
+fprintf(fp, "%f\n", mpi_t);
 
-       tot_res = sqrt(tot_res);
-        
-       printf("Residual1  %f\n",  tot_res); }
-//MPI_Win_unlock_all(upper_win);
-//MPI_Win_unlock_all(lower_win);
-
-
+fclose(fp);
+}
 
 MPI_Finalize();
 free(submesh);

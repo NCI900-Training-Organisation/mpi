@@ -144,7 +144,7 @@ int highertag=1, lowertag=2;
 
 MPI_Status top_bnd_status[2], bottom_bnd_status[2];
 MPI_Request top_bnd_requests[2],  bottom_bnd_requests[2];
-int index, top_flag, bottom_flag;
+int top_flag, bottom_flag;
 
 /* Assign topology to the ranks */
 int upper = rank +1;
@@ -227,31 +227,13 @@ while (iter< max_iter)
             tot_res +=list_residual[i];
         }
         tot_res = sqrt(tot_res);
-    printf("Residual1  %f\n",  tot_res); 
+    printf("Residual  %f\n",  tot_res); 
     }
 
     else{
     MPI_Gather(&residual, 1, MPI_DOUBLE, NULL, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD );
     }
 }
-
-MPI_Status status;
-MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &status);
-MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &status);
-
-double residual, tot_res;
-residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    
-   
-   MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-   //printf("Reduce");
-   if (rank == 0){
-
-       tot_res = sqrt(tot_res);
-        
-       printf("Residual1  %f\n",  tot_res); }
 
 MPI_Finalize();
 free(submesh);

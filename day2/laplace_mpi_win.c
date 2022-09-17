@@ -138,7 +138,9 @@ double (*subrhs)[mesh_size] = malloc(sizeof *subrhs * *ptr_rows);
 
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
-
+/* start timing MPI program */
+double start_t, end_t, mpi_t;
+start_t = MPI_Wtime();
 /* window objects for top and bottom data */ 
 MPI_Win upper_win, lower_win;
 
@@ -238,8 +240,18 @@ if (rank == 0){
 MPI_Win_free(&upper_win);
 MPI_Win_free(&lower_win);
 
+end_t =MPI_Wtime();
+mpi_t = end_t-start_t;
+if (rank ==0){
 
+FILE *fp;
+fp= fopen("win-timer.txt", "a+");
+fprintf(fp, "%f\n", mpi_t);
+
+fclose(fp);
+}
 MPI_Finalize();
+
 free(submesh);
 free(submesh_new);
 free(subrhs);

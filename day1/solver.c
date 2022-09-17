@@ -75,8 +75,6 @@ void Jacobi(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_s
     }
 }
 
-
-
 void Jacobi_int(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_submesh_new, const double *ptr_rhs, double space)
 {
 
