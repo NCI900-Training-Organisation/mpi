@@ -138,13 +138,9 @@ double (*subrhs)[mesh_size] = malloc(sizeof *subrhs * *ptr_rows);
 /* setup mesh config */
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
-
-/* start timing MPI program */
-double start_t, end_t, mpi_t;
-start_t = MPI_Wtime();
-
 int highertag=1, lowertag=2;
 
+#TODO: binds both top and bottom bnd comm requests to one single arrary
 MPI_Status top_bnd_status[2], bottom_bnd_status[2];
 MPI_Request top_bnd_requests[2],  bottom_bnd_requests[2];
 int top_flag, bottom_flag;
@@ -162,16 +158,17 @@ while (iter< max_iter)
     double residual,tot_res; 
    
     /* communicate to the higher rank process */
-    MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &top_bnd_requests[0]);
-    MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &bottom_bnd_requests[1]);
+    MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, world, &top_bnd_requests[0]);
+    MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, world, &bottom_bnd_requests[1]);
 
     /* communicate to the lower rank process */
-    MPI_Irecv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD, &bottom_bnd_requests[0]);
-    MPI_Isend(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &top_bnd_requests[1]);
+    MPI_Irecv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, world, &bottom_bnd_requests[0]);
+    MPI_Isend(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, world, &top_bnd_requests[1]);
 
     /* Jacobi Interior */
     Jacobi_int(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
 
+    #TODO: wait on all requests altogether
     /* Test on either the top or bottom layer */
     if ( (MPI_Testall(2, top_bnd_requests, &top_flag, top_bnd_status) > 0) || (MPI_Testall(2, bottom_bnd_requests, &bottom_flag, bottom_bnd_status) > 0))
     {
@@ -227,16 +224,6 @@ while (iter< max_iter)
     }
 }
 
-end_t =MPI_Wtime();
-mpi_t = end_t-start_t;
-if (rank ==0){
-
-FILE *fp;
-fp= fopen("nonblocking-timer.txt", "a+");
-fprintf(fp, "%f\n", mpi_t);
-
-fclose(fp);
-}
 
 MPI_Finalize();
 free(submesh);

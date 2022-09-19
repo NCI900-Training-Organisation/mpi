@@ -28,8 +28,6 @@ Please leave comments at frederick.fung@anu.edu.au
 #include "mesh.h"
 #include "solver.h"
 
-//#define IO
-//#define MPIIO
 //#define MPI_DEBUG
 
 int main(int argc, char *argv[]){
@@ -138,13 +136,9 @@ double (*subrhs)[mesh_size] = malloc(sizeof *subrhs * *ptr_rows);
 /* setup mesh config */
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
-/* start timing MPI program */
-double start_t, end_t, mpi_t;
-start_t = MPI_Wtime();
-
 int highertag=1, lowertag=2;
-MPI_Status status;
 
+MPI_Status status;
 
 /* Assign topology to the ranks */
 int upper = rank +1;
@@ -159,18 +153,16 @@ while (iter< max_iter)
     double residual,tot_res;
 
     /* communicate to the higher rank process */
-    MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &status);
-    MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD);
+    MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, world);
+    MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, world, &status);
 
     #ifdef MPI_DEBUG
-            printf("MPI process %d received value from rank %d, with tag %d and error code %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG, status.MPI_ERROR);
+            printf("MPI process %d received value from rank %d, with tag %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG);
     #endif
     /* communicate to the lower rank process */
-    MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD, &status);
-    MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD);
-
+    #TOdo: complete the communication for the lowertag messages.
     #ifdef MPI_DEBUG
-            printf("MPI process %d received value from rank %d, with tag %d and error code %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG, status.MPI_ERROR);
+            printf("MPI process %d received value from rank %d, with tag %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG);
     #endif
 
 
@@ -184,16 +176,6 @@ while (iter< max_iter)
         }
 }
 
-end_t =MPI_Wtime();
-mpi_t = end_t-start_t;
-if (rank ==0){
-
-FILE *fp;
-fp= fopen("blocking-timer.txt", "a+");
-fprintf(fp, "%f\n", mpi_t);
-
-fclose(fp);
-}
 MPI_Finalize();
 free(submesh);
 free(submesh_new);

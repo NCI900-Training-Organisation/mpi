@@ -139,20 +139,8 @@ double (*subrhs)[mesh_size] = malloc(sizeof *subrhs * *ptr_rows);
 /* setup mesh config */
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
-double tot_res, residual; 
-residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    
-   
-   MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-   //printf("Reduce");
-   if (rank == 0){
-
-       tot_res = sqrt(tot_res);
-        
-       printf("Initial Residual %f\n",  tot_res); }
-
-
 int highertag=1, lowertag=2;
+    
 /*  comms on the top and bottom layers are separated */
 MPI_Status top_bnd_status[2], bottom_bnd_status[2];
 MPI_Request top_bnd_requests[2],  bottom_bnd_requests[2];
@@ -164,13 +152,8 @@ if (higher >= cells) higher = MPI_PROC_NULL;
 int lower = rank -1;
 if (lower < 0) lower = MPI_PROC_NULL;
 
-/* communicate to the higher rank process */
-MPI_Recv_init(submesh[*ptr_rows-1], mesh_size, MPI_DOUBLE, higher, highertag, world, &top_bnd_requests[0]);
-MPI_Send_init(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, world, &bottom_bnd_requests[1]);
-
-/* communicate to the lower rank process */
-MPI_Recv_init(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, world, &bottom_bnd_requests[0]);
-MPI_Send_init(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, higher, lowertag, world, &top_bnd_requests[1]);
+    
+#TODO: Procedure 1: initialise the persistent communication requests.
 
 unsigned iter  = 0; 
 while (iter< max_iter)
@@ -179,8 +162,7 @@ while (iter< max_iter)
     iter+=1;
     double residual,tot_res; 
     /* start the communications */
-    MPI_Startall(2, bottom_bnd_requests);
-    MPI_Startall(2, top_bnd_requests);
+    #TODO: Procedure 2: start the persistent communication requests.
 
     /* overlapping the communication with jacobi interior computation*/
     Jacobi_int(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
@@ -241,10 +223,7 @@ if (rank == 0){
        printf("Residual  %f after iter %d \n",  tot_res, iter); 
     }
 }
-
-   
-MPI_Request_free(bottom_bnd_requests);
-MPI_Request_free(top_bnd_requests);
+#TODO: free all peersistent communication requests.
 
 MPI_Finalize();
 free(submesh);
