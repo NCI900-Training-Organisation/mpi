@@ -33,7 +33,7 @@ Frederick Fung 2022
 //#define MPI_DEBUG
 
 
-double local_L2_residual(const int *ptr_to_rows, int mesh_size, double space, const double *ptr_submesh, const double *ptr_subrhs)
+double local_L2_residual(const int *ptr_to_rows, int mesh_size, double space, const double *restrict ptr_submesh, const double *restrict ptr_subrhs)
 {
     
     /* discrete L2 norm of the residual by a given approximation */
@@ -54,7 +54,7 @@ double local_L2_residual(const int *ptr_to_rows, int mesh_size, double space, co
 }
 
 
-void Jacobi(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_submesh_new, const double *ptr_rhs, double space)
+void Jacobi(int *ptr_to_rows, int mesh_size, double *restrict ptr_submesh,  double *restrict ptr_submesh_new,  const double *restrict ptr_rhs, double space)
 {
     /* jacobi on the interior points */
     for (int i = 1; i< *ptr_to_rows-1 ; i++){
@@ -77,7 +77,7 @@ void Jacobi(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_s
 
 
 
-void Jacobi_int(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_submesh_new, const double *ptr_rhs, double space)
+void Jacobi_int(int *ptr_to_rows, int mesh_size, double *restrict ptr_submesh,  double *restrict ptr_submesh_new,  const double *restrict ptr_rhs, double space)
 {
 
         /* jacobi on the interior points */
@@ -92,7 +92,7 @@ void Jacobi_int(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *p
 }
 }
 
-void Jacobi_top(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_submesh_new, const double *ptr_rhs, double space)
+void Jacobi_top(int *ptr_to_rows, int mesh_size,  double *restrict ptr_submesh, double *restrict ptr_submesh_new,  const double *restrict ptr_rhs, double space)
 {
     
     int i = *ptr_to_rows - 2;
@@ -102,7 +102,7 @@ void Jacobi_top(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *p
 }
 
 
-void Jacobi_bottom(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_submesh_new, const double *ptr_rhs, double space)
+void Jacobi_bottom(int *ptr_to_rows, int mesh_size,  double *restrict ptr_submesh,  double *restrict ptr_submesh_new,  const double *restrict ptr_rhs, double space)
 {
     
     int i = 1;

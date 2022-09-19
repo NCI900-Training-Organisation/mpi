@@ -1,5 +1,5 @@
 /* =================================================================
-fd_laplace-serial.c
+laplace_mpi_io.c
 
 Solve a model 2D Poisson equaton with Dirichlet boundary condition.
 
@@ -10,15 +10,16 @@ The problem is discretised over a uniform mesh by finite difference
 method and the resulting linear system is solved by choices of Jacobi
 or Gauss-Seidel.
 
+Compile:  mpicc -g -Wall -O3 -o laplace_mpi_io laplace_mpi_io.c mesh.c solver.c -lm
 
-Compile:  mpicc -g -Wall -O3 -lm -o fd_laplace-mpi_block fd_laplace-mpi_block.c 
-
-Usage:  mpirun -np 4 ./fdd_laplace-mpi size tolerance method
+Usage:  mpirun -np 4 ./laplace_mpi_io size max_iter method
 
 Produced for NCI Training. 
 
 Frederick Fung 2022
 4527FD1D
+
+Please leave comments at frederick.fung@anu.edu.au
 ====================================================================*/
 #include<stdio.h>
 #include <stdlib.h>
@@ -29,7 +30,7 @@ Frederick Fung 2022
 #include "solver.h"
 
 #define MPIIO
-//#define MPI_DEBUG
+#define MPI_DEBUG
 
 int main(int argc, char *argv[]){
 
@@ -90,7 +91,7 @@ if (rank == 0){
          }
     }
     else {
-        printf("Usage: %s [size] [tolerance] [method] \n", argv[0]);
+        printf("Usage: %s [size] [max_iter] [method] \n", argv[0]);
         MPI_Finalize();
         exit(1);
     }
@@ -159,17 +160,11 @@ while (iter< max_iter)
     MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &status);
     MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD);
 
-    #ifdef MPI_DEBUG
-            printf("MPI process %d received value from rank %d, with tag %d and error code %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG, status.MPI_ERROR);
 
-    #endif
     /* communicate to the lower rank process */
     MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD, &status);
     MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD);
 
-    #ifdef MPI_DEBUG
-            printf("MPI process %d received value from rank %d, with tag %d and error code %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG, status.MPI_ERROR);
-    #endif
 
     Jacobi(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
      
@@ -181,25 +176,6 @@ while (iter< max_iter)
         }
 }
 
-/* sync after solving the problem on each cell */
-MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &status);
-MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &status);
-
-/* calc residual */
-double residual, tot_res;
-residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    
-
-/* collecting residuals and returns to rank 0 */
-MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-   
-if (rank == 0){
-
-    tot_res = sqrt(tot_res);
-        
-    printf("Residual1  %f\n",  tot_res); }
     
 /* Output data */
 char file_name[20];
@@ -207,7 +183,7 @@ char file_name[20];
 #ifndef MPIIO
 sprintf(file_name, "laplace-soln-rank-%d", rank);
 FILE *fp = fopen(file_name, "w");
-for (int i = 0; i<*ptr_to_rows; i++){
+for (int i = 0; i<*ptr_rows; i++){
     for (int j = 0; j<mesh_size; j++){
         fwrite(&submesh[i][j], sizeof(double), 1, fp);
     }
@@ -223,7 +199,7 @@ MPI_File fp;
 MPI_Offset offset; 
 MPI_Status IO_status;
 MPI_File_open(MPI_COMM_WORLD, file_name, MPI_MODE_CREATE|MPI_MODE_WRONLY, MPI_INFO_NULL, &fp);
-int count, w_count ;
+int count;
 
 if (rank ==(cells -1)){
 
@@ -232,6 +208,7 @@ if (rank ==(cells -1)){
     MPI_File_write_at(fp, offset, &submesh[1][0], count, MPI_DOUBLE, &IO_status );
 
     #ifdef MPI_DEBUG
+    int w_count;
     MPI_Get_count(&IO_status, MPI_DOUBLE, &w_count);
     printf("w_count for cell %d is %d from offset %lld\n", rank, w_count, offset);
     #endif
@@ -246,6 +223,7 @@ else if (rank == 0 ) {
 
 
     #ifdef MPI_DEBUG
+    int w_count;
     MPI_Get_count(&IO_status, MPI_DOUBLE, &w_count);
     printf("w_count for cell %d is %d from offset %lld\n", rank, w_count, offset);
     #endif 
@@ -258,6 +236,7 @@ else{
     MPI_File_write_at(fp, offset, &submesh[1][0], count, MPI_DOUBLE, &IO_status );
 
     #ifdef MPI_DEBUG
+    int w_count;
     MPI_Get_count(&IO_status, MPI_DOUBLE, &w_count);
     printf("w_count for cell %d is %d from offset %lld\n", rank, w_count, offset);
     #endif

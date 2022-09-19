@@ -1,19 +1,7 @@
 /* =================================================================
-mesh.c
+mesh.h
 
-Solve a model 2D Poisson equaton with Dirichlet boundary condition.
-
--Delta u = 2pi^2 * sin(pi x)sin(pi y) in [0,1]^2
-       u = sin(pi x) sin(y) on boundary
-
-The problem is discretised over a uniform mesh by finite difference 
-method and the resulting linear system is solved by choices of Jacobi
-or Gauss-Seidel.
-
-
-Compile:  mpicc -g -Wall -O3 -lm -o fd_laplace-mpi_block fd_laplace-mpi_block.c 
-
-Usage:  mpirun -np 4 ./fdd_laplace-mpi size tolerance method
+The header of mesh.c
 
 Produced for NCI Training. 
 

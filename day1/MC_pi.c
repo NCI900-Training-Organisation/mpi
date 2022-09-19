@@ -1,3 +1,20 @@
+/* =================================================================
+MC_pi.c
+
+Pi value approximation by Monte Carlo method.
+
+Compile:  mpicc -g -Wall -O3 -o MC_pi MC_pi.c -lm
+
+Usage:  mpirun -np 4 ./MC_pi
+
+Prepared for NCI Training. 
+
+Frederick Fung 2022
+4527FD1D
+
+Please leave comments at frederick.fung@anu.edu.au
+====================================================================*/
+#include<stdio.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
@@ -11,12 +28,11 @@
 
 int main(int argc, char *argv[]){
 
+MPI_Init(&argc, &argv);
 
 int rank, size;
-double x, y;
+double x, y, start_t, end_t;
 
-MPI_Init(&argc, &argv);
-double start_t, end_t;
 start_t = MPI_Wtime();
 MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 MPI_Comm_size(MPI_COMM_WORLD, &size);
@@ -25,20 +41,23 @@ int count=0;
 int count_tot;
 unsigned int seed ;
 
+/* distribute number of sample points to processes */
 int start = rank * N / size;
 int end = (rank+1) * N /size;
-seed = rank +RAND;
 printf("start %d end %d rank %d \n", start, end , rank);
+
+/* generate seed for rand_r */
+
+seed = rank +RAND;
 for (int i=start; i<end; i++){
+    x = rand_r(&seed)/ (double) RAND_MAX;
+    y = rand_r(&seed)/ (double) RAND_MAX;
 
-x = rand_r(&seed)/ (double) RAND_MAX;
-y = rand_r(&seed)/ (double) RAND_MAX;
-
-if (x*x + y*y <= 1.0f)  count+=1;
+    if (x*x + y*y <= 1.0f)  count+=1;
 }
 
-MPI_Reduce(&count, &count_tot, 1, MPI_INT,
-MPI_SUM, 0, MPI_COMM_WORLD);
+/* collect results from all processes to root process 0 */
+MPI_Reduce(&count, &count_tot, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 
 if (rank ==0){
     printf("count total %d Approx Pi %f\n", count_tot, (double)count_tot / N *4.0 );

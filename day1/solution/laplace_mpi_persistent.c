@@ -1,5 +1,5 @@
 /* =================================================================
-fd_laplace-serial.c
+laplace_mpi_persistent.c
 
 Solve a model 2D Poisson equaton with Dirichlet boundary condition.
 
@@ -7,18 +7,18 @@ Solve a model 2D Poisson equaton with Dirichlet boundary condition.
        u = sin(pi x) sin(y) on boundary
 
 The problem is discretised over a uniform mesh by finite difference 
-method and the resulting linear system is solved by choices of Jacobi
-or Gauss-Seidel.
+method and the resulting linear system is solved by Jacobi
 
+Compile:  mpicc -g -Wall -O3 -o laplace_mpi_persistent laplace_mpi_persistent.c mesh.c solver.c -lm
 
-Compile:  mpicc -g -Wall -O3 -lm -o fd_laplace-mpi_persistent fd_laplace-mpi_persistent.c 
+Usage:  mpirun -np 4 ./laplace_mpi_persistent size max_iter method
 
-Usage:  mpirun -np 4 ./fdd_laplace-mpi size tolerance method
-
-Produced for NCI Training. 
+Prepared for NCI Training. 
 
 Frederick Fung 2022
 4527FD1D
+
+Please leave comments at frederick.fung@anu.edu.au
 ====================================================================*/
 
 
@@ -92,7 +92,7 @@ if (rank == 0){
          }
     }
     else {
-        printf("Usage: %s [size] [tolerance] [method] \n", argv[0]);
+        printf("Usage: %s [size] [max_iter] [method] \n", argv[0]);
         MPI_Finalize();
         exit(1);
     }

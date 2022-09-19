@@ -1,5 +1,5 @@
 /* =================================================================
-fd_laplace-serial.c
+laplace_mpi_persistent.c
 
 Solve a model 2D Poisson equaton with Dirichlet boundary condition.
 
@@ -7,18 +7,18 @@ Solve a model 2D Poisson equaton with Dirichlet boundary condition.
        u = sin(pi x) sin(y) on boundary
 
 The problem is discretised over a uniform mesh by finite difference 
-method and the resulting linear system is solved by choices of Jacobi
-or Gauss-Seidel.
+method and the resulting linear system is solved by Jacobi
 
+Compile:  mpicc -g -Wall -O3 -o laplace_mpi_persistent laplace_mpi_persistent.c mesh.c solver.c -lm
 
-Compile:  mpicc -g -Wall -O3 -lm -o fd_laplace-mpi_persistent fd_laplace-mpi_persistent.c 
+Usage:  mpirun -np 4 ./laplace_mpi_persistent size max_iter method
 
-Usage:  mpirun -np 4 ./fdd_laplace-mpi size tolerance method
-
-Produced for NCI Training. 
+Prepared for NCI Training. 
 
 Frederick Fung 2022
 4527FD1D
+
+Please leave comments at frederick.fung@anu.edu.au
 ====================================================================*/
 
 
@@ -92,7 +92,7 @@ if (rank == 0){
          }
     }
     else {
-        printf("Usage: %s [size] [tolerance] [method] \n", argv[0]);
+        printf("Usage: %s [size] [max_iter] [method] \n", argv[0]);
         MPI_Finalize();
         exit(1);
     }
@@ -156,7 +156,7 @@ int highertag=1, lowertag=2;
 /*  comms on the top and bottom layers are separated */
 MPI_Status top_bnd_status[2], bottom_bnd_status[2];
 MPI_Request top_bnd_requests[2],  bottom_bnd_requests[2];
-int index, top_flag, bottom_flag;
+int top_flag, bottom_flag;
 
 /* Assign topology to the ranks */
 int higher = rank +1;
@@ -246,30 +246,10 @@ if (rank == 0){
 MPI_Request_free(bottom_bnd_requests);
 MPI_Request_free(top_bnd_requests);
 
-MPI_Status status;
-
-MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, higher, lowertag, MPI_COMM_WORLD, &status);
-MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, higher, highertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &status);
-
-//double tot_res, residual; 
-residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    
-MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-if (rank == 0){
-
-       tot_res = sqrt(tot_res);
-        
-       printf("Final residual  %f\n",  tot_res); }
-
-
-
 MPI_Finalize();
 free(submesh);
 free(submesh_new);
 free(subrhs);
 
-printf("size %d", cells);
 
 }

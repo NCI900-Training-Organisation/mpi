@@ -2,6 +2,8 @@ CC:=mpicc
 CFLAGS:=-g -Wall -O3 
 CLIBS:= -lmpiP -lm -lbfd -liberty -lunwind
 
+MC: MC_pi.c
+	${CC} ${CFLAGS} -o MC_pi MC_pi.c
 
 blocking: laplace_mpi_blocking.c mesh.c solver.c
 	${CC} ${CFLAGS} -o laplace_mpi_blocking laplace_mpi_blocking.c mesh.c solver.c -lm

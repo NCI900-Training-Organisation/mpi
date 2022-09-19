@@ -1,5 +1,5 @@
 /* =================================================================
-fd_laplace-serial.c
+laplace_mpi_collective.c
 
 Solve a model 2D Poisson equaton with Dirichlet boundary condition.
 
@@ -10,15 +10,16 @@ The problem is discretised over a uniform mesh by finite difference
 method and the resulting linear system is solved by choices of Jacobi
 or Gauss-Seidel.
 
+Compile:  mpicc -g -Wall -O3 -o laplace_mpi_collective laplace_mpi_collectve.c mesh.c solver.c -lm
 
-Compile:  mpicc -g -Wall -O3 -lm -o fd_laplace-mpi_persistent fd_laplace-mpi_persistent.c 
-
-Usage:  mpirun -np 4 ./fdd_laplace-mpi size tolerance method
+Usage:  mpirun -np 4 ./laplace_mpi_collective size max_iter method
 
 Produced for NCI Training. 
 
 Frederick Fung 2022
 4527FD1D
+
+Please leave comments at frederick.fung@anu.edu.au
 ====================================================================*/
 #include<stdio.h>
 #include <stdlib.h>
@@ -87,7 +88,7 @@ if (rank == 0){
          }
     }
     else {
-        printf("Usage: %s [size] [tolerance] [method] \n", argv[0]);
+        printf("Usage: %s [size] [max_iter] [method] \n", argv[0]);
         MPI_Abort(world, EXIT_FAILURE);
         exit(1);
     }

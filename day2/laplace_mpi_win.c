@@ -1,5 +1,5 @@
 /* =================================================================
-fd_laplace-serial.c
+laplace_mpi_win.c
 
 Solve a model 2D Poisson equaton with Dirichlet boundary condition.
 
@@ -10,15 +10,16 @@ The problem is discretised over a uniform mesh by finite difference
 method and the resulting linear system is solved by choices of Jacobi
 or Gauss-Seidel.
 
+Compile:  mpicc -g -Wall -O3 -o laplace_mpi_win laplace_mpi_win.c mesh.c solver.c -lm
 
-Compile:  mpicc -g -Wall -O3 -lm -o fd_laplace-mpi_win fd_laplace-mpi_win.c 
-
-Usage:  mpirun -np 4 ./fd_laplace-mpi size tolerance method
+Usage:  mpirun -np 4 ./laplace_mpi_win size max_iter method
 
 Produced for NCI Training. 
 
 Frederick Fung 2022
 4527FD1D
+
+Please leave comments at frederick.fung@anu.edu.au
 ====================================================================*/
 #include<stdio.h>
 #include <stdlib.h>
@@ -38,9 +39,8 @@ MPI_Init(&argc, &argv);
 
 MPI_Comm world = MPI_COMM_WORLD;
 MPI_Comm_rank(world, &rank);
-printf("rank init %d\n", rank);
+
 MPI_Comm_size(world, &cells);
-printf("size init %d\n", cells);
 
 int mesh_size, max_iter; 
 
@@ -90,7 +90,7 @@ if (rank == 0){
          }
     }
     else {
-        printf("Usage: %s [size] [tolerance] [method] \n", argv[0]);
+        printf("Usage: %s [size] [max_iter] [method] \n", argv[0]);
         MPI_Finalize();
         exit(1);
     }
@@ -121,10 +121,6 @@ if (rank == (cells - 1)) ptr_rows = &rows_top;
 
 else ptr_rows = &rows;
 
-printf("ptr size %d\n", *ptr_rows);
-
-printf("size %d\n", rows);
-
 if (rows <= 3) MPI_Abort(MPI_COMM_WORLD, 1); /* add error handling */ 
 
 /* alloc mem for meshes held in each cell */
@@ -138,9 +134,6 @@ double (*subrhs)[mesh_size] = malloc(sizeof *subrhs * *ptr_rows);
 
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
-/* start timing MPI program */
-double start_t, end_t, mpi_t;
-start_t = MPI_Wtime();
 /* window objects for top and bottom data */ 
 MPI_Win upper_win, lower_win;
 
@@ -204,52 +197,12 @@ while (iter<max_iter)
     MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
     if (rank == 0){
        tot_res = sqrt(tot_res);        
-       printf("Residual win %f\n",  tot_res); }
+       printf("Residual %f\n",  tot_res); }
 }
-
-int uppertag=1, lowertag=2;
-
-MPI_Status status;
-
-
-  /* sync after solving the problem on each cell */
-MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &status);
-MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, uppertag, MPI_COMM_WORLD);
-MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, uppertag, MPI_COMM_WORLD, &status);
-
-/* calc residual */
-double residual, tot_res;
-residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    
-
-/* collecting residuals and returns to rank 0 */
-MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-   
-if (rank == 0){
-
-    tot_res = sqrt(tot_res);
-        
-    printf("Residual1  %f\n",  tot_res); }
- 
-
-
-//MPI_Win_unlock_all(upper_win);
-//MPI_Win_unlock_all(lower_win);
 
 MPI_Win_free(&upper_win);
 MPI_Win_free(&lower_win);
 
-end_t =MPI_Wtime();
-mpi_t = end_t-start_t;
-if (rank ==0){
-
-FILE *fp;
-fp= fopen("win-timer.txt", "a+");
-fprintf(fp, "%f\n", mpi_t);
-
-fclose(fp);
-}
 MPI_Finalize();
 
 free(submesh);

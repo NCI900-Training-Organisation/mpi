@@ -1,27 +1,15 @@
 /* =================================================================
 solver.c
 
-Solve a model 2D Poisson equaton with Dirichlet boundary condition.
+This file stores routines for numerical solvers. Currently it has 
+jacobi method and a routine that calculates residual based on 5-point
+stencils.
 
--Delta u = 2pi^2 * sin(pi x)sin(pi y) in [0,1]^2
-       u = sin(pi x) sin(y) on boundary
-
-The problem is discretised over a uniform mesh by finite difference 
-method and the resulting linear system is solved by choices of Jacobi
-or Gauss-Seidel.
-
-
-Compile:  mpicc -g -Wall -O3 -lm -o fd_laplace-mpi_block fd_laplace-mpi_block.c 
-
-Usage:  mpirun -np 4 ./fdd_laplace-mpi size tolerance method
-
-Produced for NCI Training. 
+Prepared for NCI Training. 
 
 Frederick Fung 2022
 4527FD1D
 ====================================================================*/
-
-
 #include<stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -29,11 +17,8 @@ Frederick Fung 2022
 #include<mpi.h>
 #include "solver.h"
 
-#define MPIIO
-//#define MPI_DEBUG
 
-
-double local_L2_residual(const int *ptr_to_rows, int mesh_size, double space, const double *ptr_submesh, const double *ptr_subrhs)
+double local_L2_residual(const int *ptr_to_rows, int mesh_size, double space, const double *restrict ptr_submesh, const double *restrict ptr_subrhs)
 {
     
     /* discrete L2 norm of the residual by a given approximation */
@@ -54,7 +39,7 @@ double local_L2_residual(const int *ptr_to_rows, int mesh_size, double space, co
 }
 
 
-void Jacobi(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_submesh_new, const double *ptr_rhs, double space)
+void Jacobi(int *ptr_to_rows, int mesh_size, double *restrict ptr_submesh,  double *restrict ptr_submesh_new,  const double *restrict ptr_rhs, double space)
 {
     /* jacobi on the interior points */
     for (int i = 1; i< *ptr_to_rows-1 ; i++){
@@ -75,7 +60,9 @@ void Jacobi(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_s
     }
 }
 
-void Jacobi_int(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_submesh_new, const double *ptr_rhs, double space)
+
+
+void Jacobi_int(int *ptr_to_rows, int mesh_size, double *restrict ptr_submesh,  double *restrict ptr_submesh_new,  const double *restrict ptr_rhs, double space)
 {
 
         /* jacobi on the interior points */
@@ -90,7 +77,7 @@ void Jacobi_int(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *p
 }
 }
 
-void Jacobi_top(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_submesh_new, const double *ptr_rhs, double space)
+void Jacobi_top(int *ptr_to_rows, int mesh_size,  double *restrict ptr_submesh, double *restrict ptr_submesh_new,  const double *restrict ptr_rhs, double space)
 {
     
     int i = *ptr_to_rows - 2;
@@ -100,7 +87,7 @@ void Jacobi_top(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *p
 }
 
 
-void Jacobi_bottom(int *ptr_to_rows, int mesh_size, double *ptr_submesh,  double *ptr_submesh_new, const double *ptr_rhs, double space)
+void Jacobi_bottom(int *ptr_to_rows, int mesh_size,  double *restrict ptr_submesh,  double *restrict ptr_submesh_new,  const double *restrict ptr_rhs, double space)
 {
     
     int i = 1;

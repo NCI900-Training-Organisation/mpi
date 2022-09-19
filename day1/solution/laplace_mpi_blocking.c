@@ -11,14 +11,16 @@ method and the resulting linear system is solved by choices of Jacobi
 or Gauss-Seidel.
 
 
-Compile:  mpicc -g -Wall -O3 -lm -o laplace_mpi_blocking laplace_mpi_blocking.c  mesh.c solver.c
+Compile:  mpicc -g -Wall -O3 -o laplace_mpi_blocking laplace_mpi_blocking.c  mesh.c solver.c -lm
 
 Usage:  mpirun -np 4 ./fdd_laplace-mpi size tolerance method
 
-Produced for NCI Training. 
+Prepared for NCI Training. 
 
 Frederick Fung 2022
 4527FD1D
+
+Please leave comments at frederick.fung@anu.edu.au
 ====================================================================*/
 #include<stdio.h>
 #include <stdlib.h>
@@ -87,7 +89,7 @@ if (rank == 0){
          }
     }
     else {
-        printf("Usage: %s [size] [tolerance] [method] \n", argv[0]);
+        printf("Usage: %s [size] [max_iter] [method] \n", argv[0]);
         MPI_Finalize();
         exit(1);
     }
@@ -134,11 +136,9 @@ double (*subrhs)[mesh_size] = malloc(sizeof *subrhs * *ptr_rows);
 /* setup mesh config */
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
-
 int highertag=1, lowertag=2;
 
 MPI_Status status;
-
 
 /* Assign topology to the ranks */
 int upper = rank +1;

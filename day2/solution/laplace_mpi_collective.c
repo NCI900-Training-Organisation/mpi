@@ -1,5 +1,5 @@
 /* =================================================================
-fd_laplace-serial.c
+laplace_mpi_collective.c
 
 Solve a model 2D Poisson equaton with Dirichlet boundary condition.
 
@@ -10,15 +10,16 @@ The problem is discretised over a uniform mesh by finite difference
 method and the resulting linear system is solved by choices of Jacobi
 or Gauss-Seidel.
 
+Compile:  mpicc -g -Wall -O3 -o laplace_mpi_collective laplace_mpi_collectve.c mesh.c solver.c -lm
 
-Compile:  mpicc -g -Wall -O3 -lm -o fd_laplace-mpi_persistent fd_laplace-mpi_persistent.c 
-
-Usage:  mpirun -np 4 ./fdd_laplace-mpi size tolerance method
+Usage:  mpirun -np 4 ./laplace_mpi_collective size max_iter method
 
 Produced for NCI Training. 
 
 Frederick Fung 2022
 4527FD1D
+
+Please leave comments at frederick.fung@anu.edu.au
 ====================================================================*/
 #include<stdio.h>
 #include <stdlib.h>
@@ -89,7 +90,7 @@ if (rank == 0){
          }
     }
     else {
-        printf("Usage: %s [size] [tolerance] [method] \n", argv[0]);
+        printf("Usage: %s [size] [max_iter] [method] \n", argv[0]);
         MPI_Abort(world, EXIT_FAILURE);
         exit(1);
     }
@@ -156,7 +157,7 @@ unsigned iter  = 0;
 while (iter< max_iter)
 {
     iter+=1;
-    double residual,tot_res; 
+    double residual; 
 
     /* communicate to the higher rank process */
     MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &top_bnd_requests[0]);
@@ -219,6 +220,7 @@ while (iter< max_iter)
 
 
     residual = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
+    /* use rank 0 as the root process */
     if (rank ==0){
         double list_residual[cells];
         double tot_res = 0;
@@ -227,11 +229,12 @@ while (iter< max_iter)
             tot_res +=list_residual[i];
         }
         tot_res = sqrt(tot_res);
-    printf("Residual  %f\n",  tot_res); 
+        printf("Residual  %f\n",  tot_res); 
     }
 
     else{
-    MPI_Gather(&residual, 1, MPI_DOUBLE, NULL, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD );
+        /* calling MPI_Gather on all other ranks */
+        MPI_Gather(&residual, 1, MPI_DOUBLE, NULL, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD );
     }
 }
 
@@ -240,7 +243,6 @@ free(submesh);
 free(submesh_new);
 free(subrhs);
 
-printf("size %d", cells);
 
 
 
