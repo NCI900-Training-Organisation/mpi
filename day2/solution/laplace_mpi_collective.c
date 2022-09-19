@@ -39,9 +39,7 @@ MPI_Init(&argc, &argv);
 
 MPI_Comm world = MPI_COMM_WORLD;
 MPI_Comm_rank(world, &rank);
-printf("rank init %d\n", rank);
 MPI_Comm_size(world, &cells);
-printf("size init %d\n", cells);
 
 int mesh_size, max_iter; 
 
@@ -126,7 +124,6 @@ int *ptr_rows = NULL;
 /* assign extra rows to the last cell */ 
 if (rank == (cells - 1)) ptr_rows = &rows_top;
 else ptr_rows = &rows;
-printf("rows %d rank %d \n", int_rows, rank);
 
 /* alloc mem for meshes held in each cell */
 double (*submesh)[mesh_size] = malloc(sizeof *submesh * *ptr_rows);
@@ -148,8 +145,8 @@ MPI_Request top_bnd_requests[2],  bottom_bnd_requests[2];
 int top_flag, bottom_flag;
 
 /* Assign topology to the ranks */
-int upper = rank +1;
-if (upper >= cells) upper = MPI_PROC_NULL;
+int higher = rank +1;
+if (higher >= cells) higher = MPI_PROC_NULL;
 int lower = rank -1;
 if (lower < 0) lower = MPI_PROC_NULL;
 
@@ -157,15 +154,14 @@ unsigned iter  = 0;
 while (iter< max_iter)
 {
     iter+=1;
-    double residual; 
 
     /* communicate to the higher rank process */
-    MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &top_bnd_requests[0]);
-    MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &bottom_bnd_requests[1]);
+    MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, higher, highertag, world, &top_bnd_requests[0]);
+    MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, world, &bottom_bnd_requests[1]);
 
     /* communicate to the lower rank process */
-    MPI_Irecv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD, &bottom_bnd_requests[0]);
-    MPI_Isend(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &top_bnd_requests[1]);
+    MPI_Irecv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, world, &bottom_bnd_requests[0]);
+    MPI_Isend(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, higher, lowertag, world, &top_bnd_requests[1]);
 
     /* Jacobi Interior */
     Jacobi_int(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
@@ -217,25 +213,32 @@ while (iter< max_iter)
                 *(&submesh[0][0]+ i * mesh_size +j ) = *(&submesh_new[0][0]+ i * mesh_size +j);
         }     
     }
+}
 
+/* sync after solving the problem on each cell */
+MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, world);
+MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, higher, lowertag, world, MPI_STATUS_IGNORE);
+MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, higher, highertag, world);
+MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, highertag, world, MPI_STATUS_IGNORE);
 
-    residual = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    /* use rank 0 as the root process */
-    if (rank ==0){
-        double list_residual[cells];
-        double tot_res = 0;
-        MPI_Gather(&residual, 1, MPI_DOUBLE, list_residual, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-        for (int i=0; i<cells; i++){
-            tot_res +=list_residual[i];
-        }
-        tot_res = sqrt(tot_res);
-        printf("Residual  %f\n",  tot_res); 
+/* calc residual */
+double residual;
+residual = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
+/* use rank 0 as the root process */
+if (rank ==0){
+    double list_residual[cells];
+    double tot_res = 0;
+    MPI_Gather(&residual, 1, MPI_DOUBLE, list_residual, 1, MPI_DOUBLE, 0, world);
+    for (int i=0; i<cells; i++){
+        tot_res +=list_residual[i];
     }
+    tot_res = sqrt(tot_res);
+    printf("Final residual  %f after %d iterations\n",  tot_res, max_iter); 
+}
 
-    else{
-        /* calling MPI_Gather on all other ranks */
-        MPI_Gather(&residual, 1, MPI_DOUBLE, NULL, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD );
-    }
+else{
+    /* calling MPI_Gather on all other ranks */
+    MPI_Gather(&residual, 1, MPI_DOUBLE, NULL, 1, MPI_DOUBLE, 0, world );
 }
 
 MPI_Finalize();

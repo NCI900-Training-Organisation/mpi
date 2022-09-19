@@ -41,9 +41,7 @@ MPI_Init(&argc, &argv);
 
 MPI_Comm world = MPI_COMM_WORLD;
 MPI_Comm_rank(world, &rank);
-printf("rank init %d\n", rank);
 MPI_Comm_size(world, &cells);
-printf("size init %d\n", cells);
 
 int mesh_size, max_iter; 
 
@@ -83,7 +81,7 @@ if (rank == 0){
     MPI_Bcast(&mesh_size, 1, arg, 0, world);
      
     if ((strcmp(method, "Jacobi") == 0)){
-        printf("%s METHOD IS IN USE   \n ", method); }
+        printf("%s METHOD IS IN USE\n ", method); }
     else {    
         printf( "Not a valid method\n");
         MPI_Finalize();
@@ -127,7 +125,7 @@ int *ptr_rows = NULL;
 /* assign extra rows to the last cell */ 
 if (rank == (cells - 1)) ptr_rows = &rows_top;
 else ptr_rows = &rows;
-printf("rank %d rows %d\n", rank, *ptr_rows);
+
 /* alloc mem for meshes held in each cell */
 double (*submesh)[mesh_size] = malloc(sizeof *submesh * *ptr_rows);
 
@@ -144,7 +142,6 @@ int highertag=1, lowertag=2;
 
 MPI_Status bnd_status[4];
 MPI_Request bnd_requests[4];
-int index, top_flag, bottom_flag;
 
 /* Assign topology to the ranks */
 int upper = rank +1;
@@ -156,7 +153,6 @@ unsigned iter  = 0;
 while (iter< max_iter)
 {
     iter+=1;
-    double residual,tot_res; 
 
     /* communicate to the higher rank process */
     MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &bnd_requests[0]);
@@ -181,17 +177,24 @@ while (iter< max_iter)
                 *(&submesh[0][0]+ i * mesh_size +j ) = *(&submesh_new[0][0]+ i * mesh_size +j);
         }     
     }
-
-    residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, world);
-    if (rank == 0){
-        tot_res = sqrt(tot_res);  
-        printf("Residual  %f after iter %d \n",  tot_res, iter); 
-        }
 }
-   
-//MPI_Win_unlock_all(upper_win);
-//MPI_Win_unlock_all(lower_win);
+/* sync after solving the problem on each cell */
+MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, world);
+MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, lowertag, world, MPI_STATUS_IGNORE);
+MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, highertag, world);
+MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, highertag, world, MPI_STATUS_IGNORE);
+
+/* calc residual */
+double residual, tot_res;
+residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
+    
+/* collecting residuals and returns to rank 0 */
+MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, world);   
+if (rank == 0){
+    tot_res = sqrt(tot_res);        
+    printf("Final Residual %f after %d iterations.\n",  tot_res, max_iter); 
+}
+    
 
 
 MPI_Finalize();

@@ -53,7 +53,6 @@ if (rank == (cells -1) ) {
     double (*tmp1)[mesh_size] = realloc(submesh, sizeof *submesh * *ptr_rows);
     double (*tmp2)[mesh_size] = realloc(submesh_new, sizeof *submesh_new * *ptr_rows);
     double (*tmp3)[mesh_size] = realloc(subrhs, sizeof *submesh * *ptr_rows);
-    printf("mem alloc %d\n",*ptr_rows);
 
     if (tmp1 == NULL || tmp2 == NULL || tmp3 == NULL){
 
@@ -95,8 +94,6 @@ if (rank == (cells -1) ) {
         /* top boundary row */
         submesh[*ptr_rows-1][i] =bnd_fc(i, mesh_size-1, space); 
     }
-    printf("rank, size  %d, %d\n", rank, cells);
-    
 }
 
 /* initialise shubmesh values on rank 0 */

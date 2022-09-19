@@ -145,8 +145,8 @@ MPI_Request top_bnd_requests[2],  bottom_bnd_requests[2];
 int top_flag, bottom_flag;
 
 /* Assign topology to the ranks */
-int upper = rank +1;
-if (upper >= cells) upper = MPI_PROC_NULL;
+int higher = rank +1;
+if (higher >= cells) higher = MPI_PROC_NULL;
 int lower = rank -1;
 if (lower < 0) lower = MPI_PROC_NULL;
 
@@ -154,15 +154,14 @@ unsigned iter  = 0;
 while (iter< max_iter)
 {
     iter+=1;
-    double residual,tot_res; 
 
     /* communicate to the higher rank process */
-    MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &top_bnd_requests[0]);
-    MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &bottom_bnd_requests[1]);
+    MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, higher, highertag, world, &top_bnd_requests[0]);
+    MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, world, &bottom_bnd_requests[1]);
 
     /* communicate to the lower rank process */
-    MPI_Irecv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD, &bottom_bnd_requests[0]);
-    MPI_Isend(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &top_bnd_requests[1]);
+    MPI_Irecv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, world, &bottom_bnd_requests[0]);
+    MPI_Isend(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, higher, lowertag, world, &top_bnd_requests[1]);
 
     /* Jacobi Interior */
     Jacobi_int(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
@@ -170,7 +169,7 @@ while (iter< max_iter)
     /* Test on either the top or bottom layer */
     if ( (MPI_Testall(2, top_bnd_requests, &top_flag, top_bnd_status) > 0) || (MPI_Testall(2, bottom_bnd_requests, &bottom_flag, bottom_bnd_status) > 0))
     {
-       MPI_Abort(MPI_COMM_WORLD, 1);
+       MPI_Abort(world, 1);
     }
 
     /* if the top layer is ready */
@@ -214,10 +213,16 @@ while (iter< max_iter)
         }     
     }
 
-    residual = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
+
     
-    #TODO: use MPI_Gather to collect the residuals
 }
+/* sync after solving the problem on each cell */
+MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, world);
+MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, higher, lowertag, world, MPI_STATUS_IGNORE);
+MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, higher, highertag, world);
+MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, highertag, world, MPI_STATUS_IGNORE);
+
+#TODO: use MPI_Gather to collect the residuals
 
 MPI_Finalize();
 free(submesh);
