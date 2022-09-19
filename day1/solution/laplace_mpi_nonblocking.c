@@ -31,9 +31,6 @@ Please leave comments at frederick.fung@anu.edu.au
 #include "mesh.h"
 #include "solver.h"
 
-#define MPIIO
-//#define MPI_DEBUG
-
 int main(int argc, char *argv[]){
 
 int rank, cells; 

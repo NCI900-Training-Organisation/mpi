@@ -30,6 +30,8 @@ Please leave comments at frederick.fung@anu.edu.au
 #include "mesh.h"
 #include "solver.h"
 
+//#define MPI_DEBUG
+
 int main(int argc, char *argv[]){
 
 int rank, cells; 
@@ -154,7 +156,7 @@ while (iter< max_iter)
     MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD);
 
     #ifdef MPI_DEBUG
-            printf("MPI process %d received value from rank %d, with tag %d and error code %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG, status.MPI_ERROR);
+            printf("MPI process %d received value from rank %d, with tag %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG);
 
     #endif
     /* communicate to the lower rank process */
@@ -162,7 +164,7 @@ while (iter< max_iter)
     MPI_Send(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD);
 
     #ifdef MPI_DEBUG
-            printf("MPI process %d received value from rank %d, with tag %d and error code %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG, status.MPI_ERROR);
+            printf("MPI process %d received value from rank %d, with tag %d.\n", rank, status.MPI_SOURCE, status.MPI_TAG);
     #endif
 
     Jacobi(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
