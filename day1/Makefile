@@ -5,23 +5,25 @@ CLIBS:= -lmpiP -lm -lbfd -liberty -lunwind
 MC: MC_pi.c
 	${CC} ${CFLAGS} -o MC_pi MC_pi.c
 
-blocking: laplace_mpi_blocking.c mesh.c solver.c
+blocking: laplace_mpi_blocking.c mesh.c solver.c mesh.h solver.h
 	${CC} ${CFLAGS} -o laplace_mpi_blocking laplace_mpi_blocking.c mesh.c solver.c -lm
 
-nonblocking: laplace_mpi_nonblocking.c mesh.c solver.c
+nonblocking: laplace_mpi_nonblocking.c mesh.c solver.c mesh.h solver.h
 	${CC} ${CFLAGS} -o laplace_mpi_nonblocking laplace_mpi_nonblocking.c mesh.c solver.c -lm
 
-persistent: laplace_mpi_persistent.c mesh.c solver.c
+persistent: laplace_mpi_persistent.c mesh.c solver.c mesh.h solver.h
 	${CC} ${CFLAGS} -o laplace_mpi_persistent laplace_mpi_persistent.c mesh.c solver.c -lm
 
-blockingP: laplace_mpi_blocking.c mesh.c solver.c 
+blockingP: laplace_mpi_blocking.c mesh.c solver.c mesh.h solver.h
 	${CC} ${CFLAGS} -o laplace_mpiP_blocking laplace_mpi_blocking.c mesh.c solver.c $(CLIBS)
     
-nonblockingP: laplace_mpi_nonblocking.c mesh.c solver.c 
+nonblockingP: laplace_mpi_nonblocking.c mesh.c solver.c mesh.h solver.h
 	${CC} ${CFLAGS} -o laplace_mpiP_nonblocking laplace_mpi_nonblocking.c mesh.c solver.c $(CLIBS)
     
-persistentP: laplace_mpi_persistent.c mesh.c solver.c 
+persistentP: laplace_mpi_persistent.c mesh.c solver.c mesh.h solver.h
 	${CC} ${CFLAGS} -o laplace_mpiP_persistent laplace_mpi_persistent.c mesh.c solver.c $(CLIBS)
     
 clean:
-	rm -f *.o laplace_mpi_blocking laplace_mpi_nonblocking laplace_mpi_persistent
+	rm -f *.o MC_pi laplace_mpi_blocking laplace_mpi_nonblocking laplace_mpi_persistent laplace_mpiP_blocking laplace_mpiP_nonblocking laplace_mpiP_persistent
+
+.PHONY: MC blocking nonblocking persistent blockingP nonblockingP persistentP clean
