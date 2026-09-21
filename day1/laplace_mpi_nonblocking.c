@@ -131,7 +131,7 @@ int iter = 0;
 while (iter< max_iter)
 {
     iter+=1;
-   
+
     /* communicate to the higher rank process */
     MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, world, &top_bnd_requests[0]);
     MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, world, &bottom_bnd_requests[1]);

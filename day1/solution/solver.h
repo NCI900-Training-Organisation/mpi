@@ -8,7 +8,6 @@ Preepared for NCI Training.
 Frederick Fung 2022
 4527FD1D
 ====================================================================*/
-
 double local_L2_residual(const int *ptr_to_rows, 
                          int mesh_size, 
                          double space, 

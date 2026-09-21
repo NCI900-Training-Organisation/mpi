@@ -1,11 +1,11 @@
 /* =================================================================
 solver.c
 
-This file stores routines for numerical solvers. Currently it has 
+This file stores routines for numerical solvers. Currently it has
 jacobi method and a routine that calculates residual based on 5-point
 stencils.
 
-Prepared for NCI Training. 
+Prepared for NCI Training.
 
 Frederick Fung 2022
 4527FD1D

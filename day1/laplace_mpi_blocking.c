@@ -13,7 +13,7 @@ Compile:  mpicc -g -Wall -O3 -o laplace_mpi_blocking laplace_mpi_blocking.c mesh
 
 Usage:  mpirun -np 4 ./laplace_mpi_blocking mesh_size max_iter Jacobi
 
-prepared for NCI Training. 
+prepared for NCI Training.
 
 Frederick Fung 2022
 4527FD1D

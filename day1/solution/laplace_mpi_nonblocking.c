@@ -32,6 +32,9 @@ Please leave comments at frederick.fung@anu.edu.au
 #include "mesh.h"
 #include "solver.h"
 
+//#define MPIIO
+//#define MPI_DEBUG
+
 int main(int argc, char *argv[]){
 
 int rank, cells; 
@@ -128,17 +131,17 @@ while (iter< max_iter)
     iter+=1;
 
     /* communicate to the higher rank process */
-    MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, MPI_COMM_WORLD, &bnd_requests[0]);
-    MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, MPI_COMM_WORLD, &bnd_requests[1]);
+    MPI_Irecv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, highertag, world, &bnd_requests[0]);
+    MPI_Isend(submesh[1], mesh_size, MPI_DOUBLE, lower, highertag, world, &bnd_requests[1]);
 
     /* communicate to the lower rank process */
-    MPI_Irecv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, MPI_COMM_WORLD, &bnd_requests[2]);
-    MPI_Isend(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, MPI_COMM_WORLD, &bnd_requests[3]);
+    MPI_Irecv(submesh[0], mesh_size, MPI_DOUBLE, lower, lowertag, world, &bnd_requests[2]);
+    MPI_Isend(submesh[*ptr_rows-2], mesh_size, MPI_DOUBLE, upper, lowertag, world, &bnd_requests[3]);
 
     /* Jacobi Interior */
     Jacobi_int(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
 
-    /* Twait on both top and bottom layers to complete comm */
+    /* Wait for both top and bottom halo exchanges to complete. */
     MPI_Waitall(4, bnd_requests, bnd_status);
 
     Jacobi_top(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
@@ -151,6 +154,7 @@ while (iter< max_iter)
         }     
     }
 }
+
 /* sync after solving the problem on each cell */
 MPI_Send(submesh[1], mesh_size, MPI_DOUBLE, lower, lowertag, world);
 MPI_Recv(submesh[*ptr_rows -1], mesh_size, MPI_DOUBLE, upper, lowertag, world, MPI_STATUS_IGNORE);
@@ -167,8 +171,6 @@ if (rank == 0){
     tot_res = sqrt(tot_res);        
     printf("Final Residual %f after %d iterations.\n",  tot_res, max_iter); 
 }
-    
-
 
 MPI_Finalize();
 free(submesh);

@@ -115,7 +115,7 @@ if (submesh == NULL || submesh_new == NULL || subrhs == NULL) {
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
 int highertag=1, lowertag=2;
-    
+
 /*  comms on the top and bottom layers are separated */
 MPI_Status top_bnd_status[2], bottom_bnd_status[2];
 MPI_Request top_bnd_requests[2],  bottom_bnd_requests[2];
@@ -127,7 +127,7 @@ if (higher >= cells) higher = MPI_PROC_NULL;
 int lower = rank -1;
 if (lower < 0) lower = MPI_PROC_NULL;
 
-    
+
 #TODO: Procedure 1: initialise the persistent communication requests.
 
 int iter = 0;
@@ -158,7 +158,7 @@ while (iter< max_iter)
     /* perform jacobi on the bottom bnd */
     Jacobi_bottom(ptr_rows, mesh_size, &submesh[0][0], &submesh_new[0][0], &subrhs[0][0], space);
     }
-    
+
     /* if the bottom layer is yet ready */
     else{
         /* wait on the bottom layer */
@@ -201,7 +201,7 @@ MPI_Recv(submesh[0], mesh_size, MPI_DOUBLE, lower, highertag, world, MPI_STATUS_
 /* calc residual */
 double residual, tot_res;
 residual  = local_L2_residual(ptr_rows, mesh_size, space, &submesh[0][0], &subrhs[0][0]);
-    
+
 /* collecting residuals and returns to rank 0 */
 MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, world);   
 if (rank == 0){

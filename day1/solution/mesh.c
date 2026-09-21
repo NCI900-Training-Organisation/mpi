@@ -23,7 +23,6 @@ Frederick Fung 2022
 
 double bnd_fc(int x, int y, double space){
     /* Boundary function */
-
     double value = sin(M_PI * x * space) * sin(M_PI *y *space);
     //printf ("value %f\n", value);
     return value;
@@ -78,7 +77,6 @@ if (rank == (cells -1) ) {
         /* top boundary row */
         submesh[*ptr_rows-1][i] =bnd_fc(i, mesh_size-1, space); 
     }
-    
 }
 
 /* initialise shubmesh values on rank 0 */
