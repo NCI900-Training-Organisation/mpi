@@ -1,31 +1,32 @@
-MPI 101
-=====
+Concepts and practice
+=====================
 
-In this section, we will learn the basics of MPI. Many people get by writing parallel code by just using six MPI calls, and this is what we will show you in this section.
+Follow the sections in this order. Exercise numbers match the teaching
+notebooks; see :doc:`exercises` for the complete file map.
 
-.. toctree::
-
-    tutorial/MPI101/intro
-    tutorial/MPI101/monte-carlo
-    tutorial/MPI101/basic_mpi
-    turotial/MPI101/model_problem
-
-Topic 1: Syntax and Semantics
-=============================
+Day 1
+-----
 
 .. toctree::
-    tutorial/Topic_one/semantics
+   :maxdepth: 2
 
+   tutorial/MPI101/intro
+   tutorial/MPI101/basic_mpi
+   tutorial/MPI101/monte-carlo
+   tutorial/MPI101/model_problem
+   tutorial/Topic_one/semantics
+   tutorial/Topic_two/p2p_comm
 
-Topic 2: Point-to-point Communication
-=====================================
+Day 2
+-----
 
 .. toctree::
-    tutorial/Topic_two/p2p_comm
+   :maxdepth: 2
 
-Topic 3: Collective Communication
-==================================
+   tutorial/Topic_three/collective_comm
+   tutorial/Topic_four/rma
+   tutorial/Topic_five/mpi_io
+   tutorial/Topic_six/profiling
 
-.. toctree::
-    tutorial/Topic_three/collective_comm
-
+MPI-IO precedes profiling here, matching the notebook. MPI-IO is optional if
+training time is limited; skip both its run and its output-inspection cells.

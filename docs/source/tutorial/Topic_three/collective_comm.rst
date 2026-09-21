@@ -1,150 +1,160 @@
-Collective Communication 
-----------------------------
-
-We have seen a bundle of point to point communication in the previous section. 
-Despite the various modes and behaviours of the communication, the basic idea is the same: a message is sent from one process to another.
-In this section, we discuss collective communication, which involves multiple processes.
-The collective communication can be further divided into: **All to All**, **One to All**, and **All to One** communication.
-
-.. admonition:: Definition
-
-    **All to All** All processes contribute to the result. All processes receive the result.
-
-    **All to One** All processes contribute to the result. One process receives the result.
-
-    **All to One** One process contributes to the result. All processes receive the result.
+Collective communication
+========================
 
 
-In our example, we need the collective communications for quantities such as the averaging the errors, or the max or min of the function values defined over the domain.
+A collective involves the participating group of a communicator. In these
+intracommunicator examples, every rank calls it, including the root.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Intent
+     - Routine
+     - Result
+   * - Copy the root data to everyone
+     - ``MPI_Bcast``
+     - Same data on every rank
+   * - Distribute separate chunks
+     - ``MPI_Scatter``
+     - One chunk per rank
+   * - Collect separate chunks
+     - ``MPI_Gather``
+     - Contributions at root, in rank order
+   * - Combine values at root
+     - ``MPI_Reduce``
+     - Root gets sum, maximum, or another reduction
+   * - Combine values everywhere
+     - ``MPI_Allreduce``
+     - All ranks get the reduced result
+   * - Collect chunks everywhere
+     - ``MPI_Allgather``
+     - All ranks get every contribution
+   * - Exchange a chunk with each peer
+     - ``MPI_Alltoall``
+     - One chunk from each peer
+   * - Compute prefixes
+     - ``MPI_Scan``
+     - Rank r gets a reduction over ranks 0 through r
+   * - Wait for group participation
+     - ``MPI_Barrier``
+     - No rank returns until all have entered
 
 
+Participation and ordering
+--------------------------
 
+#. Call matching collectives in the same order on all ranks of the communicator.
+#. Agree on root and communicator for rooted operations; use matching type
+   signatures and the counts required by the routine.
+#. Put root-only processing around the result, not around the collective call.
+#. A blocking collective is not necessarily a barrier. Its local completion
+   does not require every peer to have returned.
 
-One to all Communication
-=========================
+``MPI_Allreduce`` and ``MPI_Alltoall`` have different purposes even though every
+rank participates. See the `collective correctness rules
+<https://www.mpi-forum.org/docs/mpi-4.1/mpi41-report/node172.htm>`_.
 
+.. figure:: ../../figures/broadcast.png
+   :alt: Broadcast copies root data to all ranks.
+   :width: 65%
 
-**MPI_BCAST**
-MPI_BCAST broadcasts a message from the process with rank "root" to all other processes of the communicator, as shown in the figure below.
+   The solvers broadcast validated input arguments.
 
-.. image:: ../../figures/bcast.png
+.. figure:: ../../figures/Reduce.png
+   :alt: Reduce combines all ranks' contributions at the root.
+   :width: 65%
 
-In this diagram, each row of the box represents data location in one process. Initially only the first process contain the data A0, after the MPI_BCAST call, all processes contain the data A0.
+   A reduction produces one combined result at the root.
 
-.. admonition:: Key MPI call
-    :class: hint
+.. figure:: ../../figures/Allreduce.png
+   :alt: Allreduce gives the reduced result to every rank.
+   :width: 65%
 
-    MPI_BCAST(buffer, count, datatype, root, comm)
-        INOUT **buffer**: initial address of send buffer (choice)
-        IN **count**: number of elements in send buffer (non-negative integer)
-        IN **datatype**: data type of elements in send buffer (handle)
-        IN **root**: rank of broadcast root (integer)
-        IN **comm**: communicator (handle)
-    
-    C Binding:
+   Use allreduce when every rank needs the result, such as a stopping decision.
 
-    .. code-block:: c
+The global residual
+-------------------
 
-        // broadcast a message from the process with rank "root" to all other processes of the communicator
-        int MPI_Bcast(void *buffer, int count, MPI_Datatype datatype, int root, MPI_Comm comm)
+Each rank computes a sum of squares over its owned interior nodes:
 
+.. math::
 
+    q_r=\sum_{(i,j)\text{ owned by rank }r}[h^2(Au-b)_{i,j}]^2,
+    \qquad R=\sqrt{\sum_r q_r}.
 
-All to One Communication
-=========================
+Sum squares first, then take one square root. Summing local norms would
+produce a different quantity. The routine is named ``local_L2_residual``:
 
-**MPI_REDUCE**
-MPI_REDUCE combines the data from all processes, operate on them by a predefined operator, and returns the result to one process. The figure below shows the operation of MPI_REDUCE.
+.. code-block:: c
 
+    double residual = local_L2_residual(ptr_rows, mesh_size, space,
+                                       &submesh[0][0], &subrhs[0][0]);
+    double total;
+    MPI_Reduce(&residual, &total, 1, MPI_DOUBLE, MPI_SUM, 0, world);
+    if (rank == 0) {
+        total = sqrt(total);
+    }
 
-.. image:: ../../figures/Reduce.png
+Other predefined operators include ``MPI_MAX``, ``MPI_MIN``, ``MPI_PROD``,
+``MPI_MAXLOC``, and ``MPI_MINLOC``; the last two use compatible pair datatypes.
 
-In the diagram above, a global reduce operation performs across all members of the communication group, and returns the result of the reduction to one member of the group.
-
-
-.. admonition:: Key MPI call
-    :class: hint
-
-    MPI_REDUCE(sendbuf, recvbuf, count, datatype, op, root, comm)
-        IN **sendbuf**: address of send buffer (choice)
-        OUT **recvbuf**: address of receive buffer (choice, significant only at root)
-        IN **count**: number of elements in send buffer (non-negative integer)
-        IN **datatype**: data type of elements in send buffer (handle)
-        IN **op**: operation (handle)
-        IN **root**: rank of root process (integer)
-        IN **comm**: communicator (handle)
-   
-   
-    C Binding:
-
-    .. code-block:: c
-
-        // combine the data from all processes, operate on them by a predefined operator, and return the result to one process
-        int MPI_Reduce(void *sendbuf, void *recvbuf, int count, MPI_Datatype datatype, MPI_Op op, int root, MPI_Comm comm)
-
-In our example, we use `MPI_REDUCE` to calculate the global l2 residual.
+Gather preserves the contributions
+----------------------------------
 
 .. code-block:: c
 
-        /* get local residual from each process */
-        double residual, tot_res;
-        residual  = local_l2_residual(ptr_rows, mesh_size, space, &submesh[0][0], \
-        subrhs[0][0]);
-    
-        /* sum res from all processes and calculate l2 norm */
-        MPI_Reduce(&residual, &tot_res, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-        if (rank == 0){
-            tot_res = sqrt(tot_res);
-            printf("Residual1  %f\n",  tot_res); 
-            }
+    int MPI_Gather(const void *sendbuf, int sendcount, MPI_Datatype sendtype,
+                   void *recvbuf, int recvcount, MPI_Datatype recvtype,
+                   int root, MPI_Comm comm);
 
-.. note::
-    MPI standard provides a set of predefined operators.
+For one double per rank, root allocates ``cells`` doubles but specifies
+``recvcount = 1``: it is the count from each rank, not the total. Contributions
+are stored in rank order, including root's own contribution. The receive
+buffer is ignored on nonroot ranks, where it may be ``NULL``.
 
-    1. MPI_MAX: maximum
-    2. MPI_MIN: minimum
-    3. MPI_SUM: sum
-    4. MPI_PROD: product
-    5. MPI_MAXLOC: max value and location
-    6. MPI_MINLOC: min value and location
-    7. and a few more bit-wise operators
-    User-defined reduction operations are also possible.
+Floating-point addition is not associative. For example:
 
+.. code-block:: python
 
+    a, b, c = 1e16, -1e16, 1.0
+    print((a + b) + c)  # 1.0
+    print(a + (b + c))  # 0.0
 
+A reduction may combine values in a tree. Gather lets root sum in a chosen
+rank order for this fixed decomposition. It does not guarantee identical bits
+across rank counts or compilers: local sums can change. Compare results using
+numerical tolerances. Gathering also adds root storage and summation work.
 
-All to All Communication
-=========================
+Blocking, nonblocking, and persistent forms
+-------------------------------------------
 
-**MPI_ALLREDUCE**
-`MPI_ALLREDUCE`` is similar to MPI_REDUCE, but the result is returned to all processes. 
-Effectively, it is the same as `MPI_REDUCE` + `MPI_BCAST`.  The figure below shows the operation of `MPI_ALLREDUCE`.
+For example, ``MPI_Bcast`` completes locally before returning,
+``MPI_Ibcast`` initiates and returns a request, and ``MPI_Bcast_init`` creates
+a persistent request. Persistent collectives were added in MPI 4.0.
+The exercise uses blocking gather; participation and ordering rules still
+apply to the other forms.
 
-.. image:: ../../figures/Allreduce.png
+.. _exercise-2-1:
 
-.. admonition:: Key MPI call
-    :class: hint
+Exercise 2.1: Gather and sum residuals
+--------------------------------------
 
-    MPI_ALLREDUCE(sendbuf, recvbuf, count, datatype, op, comm)
-        IN **sendbuf**: address of send buffer (choice)
-        OUT **recvbuf**: address of receive buffer (choice)
-        IN **count**: number of elements in send buffer (non-negative integer)
-        IN **datatype**: data type of elements in send buffer (handle)
-        IN **op**: operation (handle)
-        IN **comm**: communicator (handle)
-    C Binding:
+.. admonition:: STOP HERE -- Exercise 2.1
+   :class: important
 
-.. code-block:: c
-    
-    // combine the data from all processes, operate on them by a predefined operator, and return the result to all processes
-    int MPI_Allreduce(void *sendbuf, void *recvbuf, int count, MPI_Datatype datatype, MPI_Op op, MPI_Comm comm)
+   **Edit:** :download:`day2/laplace_mpi_collective.c <../../../../day2/laplace_mpi_collective.c>`
 
-.. admonition:: Remark
-    :class: hint
+   #. Find the ``MPI_Gather`` TODO after the final halo exchange.
+   #. Compute the local contribution with ``local_L2_residual``. Every rank must call ``MPI_Gather``.
+   #. On rank 0, allocate one double per rank, sum in rank order, then take one square root and print.
 
-    #. The collective communication procedures `MPI_REDUCE`, `MPI_ALLREDUCE`, `MPI_BCAST` are blocking operations.
-    
-    #. There are corresponding non-blocking procedures for each of them following the same deinition of the nonblocking operation that we discussed before.
+Save your changes, then run from ``day2/``:
 
-    #. There are also corresponding persistent procedures for each of them following the same definition of the persistent operation that we discussed before.
+.. code-block:: bash
 
+    make collective
+    mpiexec -np 4 ./laplace_mpi_collective 300 1000 Jacobi
+
+**Checkpoint:** Rank 0 reports about ``0.031236``; all ranks finish. Continue to the RMA section.
+
+Compare your attempt with :download:`the reference solution <../../../../day2/solution/laplace_mpi_collective.c>`.

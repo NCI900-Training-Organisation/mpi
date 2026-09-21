@@ -1,125 +1,63 @@
-MPI Semantics
----------------
+Operations, messages, and completion
+====================================
 
+An operation describes the whole communication activity; an MPI procedure
+specifies an action, and its C binding gives the callable spelling, such as
+``MPI_Send``. The four conceptual stages are binding arguments, starting,
+completing, and releasing resources.
 
-.. admonition:: Overview
-   :class: Overview
+.. list-table::
+   :header-rows: 1
 
-    * **Tutorial:** 20 min
+   * - Form
+     - Bind/start
+     - Complete
+     - Release
+   * - Blocking
+     - ``MPI_Send`` or ``MPI_Recv``
+     - Before the call returns
+     - Handled by the call
+   * - Nonblocking
+     - ``MPI_Isend`` or ``MPI_Irecv``
+     - Wait or a test reporting completion
+     - Ordinary request released on completion
+   * - Persistent
+     - Initialise once; start each exchange
+     - Wait or a test reporting completion
+     - Explicitly free after final use
 
-        **Objectives:**
-            #. Learn the semantics of MPI.
+.. figure:: ../../figures/MPI_operation.png
+   :alt: Stages of MPI communication operations.
+   :width: 75%
 
-To help us understand and better use MPI, we get into the details of its semantics. Fair warning ahead, this is a bit of a dry topic and it does get tedious. You can skip this section if you just want pick up MPI functions and use them straightaway, but recommend you to go through this section to acquire a more in-depth understanding of MPI.
+   Different interfaces combine or separate the operation stages.
 
+Blocking describes completion for the caller, not a barrier across all ranks.
+A local procedure can complete independently of another rank's participation;
+a nonlocal procedure may require it. A standard send can depend on the peer
+posting a receive.
 
-We discuss the semantics of MPI with the structure illustrated in the following diagram:
+Data and envelope
+-----------------
 
-.. image:: ../../figures/MPI_operation.png
+A message's data are described by a buffer address, count, and datatype.
+Its envelope includes source, destination, tag, and communicator. A receive
+must match a message addressed to it in the same communication context.
+``MPI_ANY_SOURCE`` and ``MPI_ANY_TAG`` are receive-side wildcards.
 
+Counts measure datatype elements, not bytes: ``mesh_size`` values of
+``MPI_DOUBLE`` describe one row of doubles. The receiver must supply enough
+capacity and compatible element types. Derived datatypes describe memory
+layouts; they do not create new C language types.
 
+After a completed receive, use ``status.MPI_SOURCE`` and ``status.MPI_TAG``
+to identify the message and ``MPI_Get_count`` for its element count. Use
+``MPI_STATUS_IGNORE`` when these details are not needed. Check a routine's
+return value for an error code when using a returning error handler; do not
+use ``status.MPI_ERROR`` as the error result of ``MPI_Recv``.
 
-MPI Operations
-----------------
-First, we introduce the concept of MPI operations.
+**Check:** can matching tags connect messages on different communicators?
+No: the communication context is part of matching.
 
-.. admonition:: Definition
-
-    An **MPI operation** is a sequence of steps performed by the MPI library to establish and enable data transfer and/or synchronishation. It consists of four stages: **initialisation**, **starting**, **completion**, and **freeing**. An MPI operation is implemented as a set of one or more MPI procedures. 
-
-
-The main MPI operations are: **Blocking Operations**, **Non-blocking Operations**, **Collective Operations**, and **Persistent Operations**. We will discuss each of these in detail in the upcoming sections.
-
-.. note::
-    An MPI operation describes the property of a class of data transfer mechanism but does not define a unique MPI procedure.
-
-The four stages of an MPI operation are:
-
-1. **initialisation**: Hands over the argument list to the operation but not the content of the data buffers.
-2. **starting**: Hands over the control of the data buffers, if any, to the associated operation.
-3. **completion**: Returns control of the content of the data buffers and indicates that output buffers and arguments, if any, have been updated.
-4. **freeing**: Returns control of the rest of the argument list.
-
-
-We can apply these stages to define the four aforementioned MPI operations.
-
-.. admonition:: Definition
-
-    A **blocking operation** is when the four stages are combined into a single procedure call.
-
-An example is the blocking send operation is the MPI procedure `MPI_SEND`.
-
-.. image:: ../../figures/Blocking_Send.png
- 
-The send operation is blocking at process A. 
-
-
-.. admonition:: Definition
-
-    A **non-blocking operation** is when the the **initialisation** and **starting** stages are combined into a single nonblocking procedure call, and the **completion** and **freeing** stages are combined into another single procedure call.
-
-.. image:: ../../figures/NonBlocking_Send.png
-
-The send operation is non-blocking at process A.
-
-.. admonition:: Definition
-    ::class: hint
-    
-    A **persistent operation** is when there is a single procedure for each of the four stages of the operation.
-
-
-.. image:: ../../figures/Persistent_Send.png
-
-The send operation is persistent at process A.
-
-
-
-
-MPI Procedures
-----------------
-We now understand the MPI operations are realised by MPI procedures, we can formally introduce the concept of MPI procedures.
-
-.. admonition:: Definition
-
-    An **MPI procedure** describes functionalities and are specified using a language-independent notation. An MPI operation-related procedure implements at least a part of stage of an MPI operation.
-
-.. admonition:: Example
-    :class: hint
-
-    MPI_SEND, MPI_PROBE
-
-There for more than 400 MPI procedures in MPI Standard 4.0. We use all capital letters to denote MPI procedures, e.g., `MPI_SEND`.
-
-.. note::
-
-    #. All MPI procedures can either be **local** or **non-local**, depending on whether its completion requires calls on another MPI process. 
-    #. An MPI operation can be realised by different MPI procedures. For example, a block send operation can be realised by different mode such as `MPI_SEND`, `MPI_SSEND`, `MPI_BSEND`, and `MPI_RSEND`.
-
-
-MPI Functions
-----------------
-
-.. admonition:: Definition
-    :class: hint
-
-    An **MPI function** is a language-specific binding of an MPI procedure. It is a function that can be called from a program written in a specific language, e.g., C, Fortran. 
-
-.. admonition:: Example
-    :class: hint
-
-    MPI_Send, MPI_Probe
-
-Note that to distinguish betwee MPI procedure and MPI function, the MPI functions use lower case.
-
-
-
-
-We summarise the semantics with two diagrams:
-
-.. image:: ../../figures/Blocking_operation.png
-
-Blocking send operation realised by two different MPI procedures
-
-.. image:: ../../figures/Nonblocking_operation.png
-
-Non-blocking send operation realised by two different groups of MPI procedures, each group consists of two MPI procedures.
+Continue to :doc:`../Topic_two/p2p_comm` for call signatures, parameter tables,
+and the communication exercises.

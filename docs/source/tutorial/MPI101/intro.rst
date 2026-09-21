@@ -1,34 +1,71 @@
-MPI 101
+MPI foundations
+===============
+
+MPI (Message Passing Interface) is a standard for communication between
+processes. Open MPI, MPICH, and Intel MPI are implementations. MPI defines
+communication routines; the programmer chooses how to split work and data.
+The workshop uses C bindings.
+
+With ``mpiexec -np 4 ./program``, four processes execute the program. In the
+single program, multiple data (SPMD) model, each rank selects different work
+using its rank number. Each process has its own address space, including when
+several processes share one node. Changing a variable on rank 0 does not
+change rank 1's copy.
+
+A communicator identifies a group and a communication context. A rank is a
+process's position in that group, from zero to ``size - 1``. A process can
+have different ranks in different communicators. ``MPI_COMM_WORLD`` contains
+the processes in the simple jobs used here; rank 0 is an ordinary process
+chosen as root by the program.
+
+.. figure:: ../../figures/communicator.png
+   :alt: Processes participating in overlapping communicator groups.
+   :width: 65%
+
+   Overlapping groups can communicate in separate contexts.
+
+Strong and weak scaling
+-----------------------
+
+.. list-table::
+   :header-rows: 1
+
+   * - Experiment
+     - Fixed quantity
+     - Ideal result as ranks increase
+   * - Strong scaling
+     - Total work
+     - Elapsed time decreases in proportion to rank count.
+   * - Weak scaling
+     - Work per rank
+     - Elapsed time stays constant as total work increases.
+
+For fixed work, speedup is :math:`S_p=T_1/T_p` and efficiency is
+:math:`E_p=S_p/p`. Communication, serial work, and imbalance limit these ideals.
+For this square-grid problem, keep ``mesh_size`` fixed for strong scaling.
+For approximately fixed unknowns per rank, increase the grid dimension as
+:math:`N\propto\sqrt{p}`; communication costs may still change.
+
+A brief history
 ---------------
 
-In this section, we will learn the basics of MPI. Many people get by writing parallel code by just using six MPI calls, and this is what we will show you in this section.
+Standardisation began in 1992. MPI 1.0 appeared in 1994, followed by MPI 1.1
+in 1995 and MPI 1.2 in 1997. MPI 2.0 (1997) added parallel I/O, RMA, and dynamic
+processes. MPI 1.3 and MPI 2.1 consolidated earlier documents in 2008; MPI 2.2
+followed in 2009.
 
-Before we start, let's talk about why MPI is the de-facto standard for parallel programming. 
-Consider a computing task that takes one processor :math:`t` time to complete where :math:`t` and :math:`N` are two scalars. Now, it's possible to scale the task in two different ways. 
+MPI 3.0 (2012) added nonblocking collectives and extended RMA; MPI 3.1 (2015)
+added clarifications and nonblocking collective I/O. MPI 4.0 (2021) added large
+counts, persistent collectives, partitioned communication, and Sessions.
+MPI 4.1 (2023) made clarifications and minor extensions. MPI 5.0 (2025) added
+a standard Application Binary Interface (ABI).
 
-1. Scale to :math:`N` number of processors and it computes a larger task of size :math:`t \times N` in the same :math:`t` time. This is called **weak scaling**.
-2. Scale to :math:`N` number of processors and it computes the same task of size :math:`t` in :math:`t/N` time. This is called **strong scaling**. 
+See the `MPI Forum release history <https://www.mpi-forum.org/docs/mpi-5.0/mpi50-report/mpi50-report.htm>`_.
+The release number of a library such as Open MPI is separate from its supported
+MPI standard version. Most routines in these exercises predate MPI 4.0.
 
-We see in both cases, it requires the ability to scale the number of processors to solve the same problem. This is where MPI comes in - utilise multiple processors via communications.
+.. admonition:: Check your understanding
 
-
-**What MPI does and doesn't do**
-
-To achieve the scaling mentioned above, MPI provides the following for the programmer:
-
-.. note::
-        1. a communication libraries;
-        2. datatypes;
-        3. language bindings with C and Fortran;
-        4. parallel I/O;
-        5. interface for tool support;
-        6. and many more
-
-.. note::
-    However, what MPI does not do for programmers is:
-    **It doesn't write or design the parallel implementation for you.**
-
-.. note::
-    The MPI users are responsible for the correctness of the implementation of their parallel algorithms. 
-
-
+   If every rank runs the same executable, why can they perform different work?
+   Each rank queries its identity and uses it to choose a portion of the data;
+   the program supplies the decomposition.

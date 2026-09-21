@@ -1,0 +1,3584 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2026.4.23)  21 SEP 2026 10:51
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/home/fredf/Desktop/NCI/2026/mpi/docs/slides/MPI-NCI-2026
+(/home/fredf/Desktop/NCI/2026/mpi/docs/slides/MPI-NCI-2026.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-22> (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
+Document Class: beamer 2023/02/20 v3.69 A class for typesetting presentations
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasemodes.sty (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count185
+)
+\beamer@tempbox=\box51
+\beamer@tempcount=\count186
+\c@beamerpauses=\count187
+ (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasedecode.sty
+\beamer@slideinframe=\count188
+\beamer@minimum=\count189
+\beamer@decode@box=\box52
+)
+\beamer@commentbox=\box53
+\beamer@modecount=\count190
+) (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+)
+\headdp=\dimen140
+\footheight=\dimen141
+\sidebarheight=\dimen142
+\beamer@tempdim=\dimen143
+\beamer@finalheight=\dimen144
+\beamer@animht=\dimen145
+\beamer@animdp=\dimen146
+\beamer@animwd=\dimen147
+\beamer@leftmargin=\dimen148
+\beamer@rightmargin=\dimen149
+\beamer@leftsidebar=\dimen150
+\beamer@rightsidebar=\dimen151
+\beamer@boxsize=\dimen152
+\beamer@vboxoffset=\dimen153
+\beamer@descdefault=\dimen154
+\beamer@descriptionwidth=\dimen155
+\beamer@lastskip=\skip48
+\beamer@areabox=\box54
+\beamer@animcurrent=\box55
+\beamer@animshowbox=\box56
+\beamer@sectionbox=\box57
+\beamer@logobox=\box58
+\beamer@linebox=\box59
+\beamer@sectioncount=\count191
+\beamer@subsubsectionmax=\count192
+\beamer@subsectionmax=\count193
+\beamer@sectionmax=\count194
+\beamer@totalheads=\count195
+\beamer@headcounter=\count196
+\beamer@partstartpage=\count197
+\beamer@sectionstartpage=\count198
+\beamer@subsectionstartpage=\count199
+\beamer@animationtempa=\count266
+\beamer@animationtempb=\count267
+\beamer@xpos=\count268
+\beamer@ypos=\count269
+\beamer@ypos@offset=\count270
+\beamer@showpartnumber=\count271
+\beamer@currentsubsection=\count272
+\beamer@coveringdepth=\count273
+\beamer@sectionadjust=\count274
+\beamer@toclastsection=\count275
+\beamer@tocsectionnumber=\count276
+ (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseoptions.sty (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+))
+\beamer@paperwidth=\skip49
+\beamer@paperheight=\skip50
+ (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count277
+\Gm@cntv=\count278
+\c@Gm@tempcnt=\count279
+\Gm@bindingoffset=\dimen156
+\Gm@wd@mp=\dimen157
+\Gm@odd@mp=\dimen158
+\Gm@even@mp=\dimen159
+\Gm@layoutwidth=\dimen160
+\Gm@layoutheight=\dimen161
+\Gm@layouthoffset=\dimen162
+\Gm@layoutvoffset=\dimen163
+\Gm@dimlist=\toks17
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks18
+\pgfutil@tempdima=\dimen164
+\pgfutil@tempdimb=\dimen165
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box60
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks21
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+\pgf@x=\dimen166
+\pgf@xa=\dimen167
+\pgf@xb=\dimen168
+\pgf@xc=\dimen169
+\pgf@y=\dimen170
+\pgf@ya=\dimen171
+\pgf@yb=\dimen172
+\pgf@yc=\dimen173
+\c@pgf@counta=\count280
+\c@pgf@countb=\count281
+\c@pgf@countc=\count282
+\c@pgf@countd=\count283
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen174
+\pgfmath@count=\count284
+\pgfmath@box=\box61
+\pgfmath@toks=\toks22
+\pgfmath@stack@operand=\toks23
+\pgfmath@stack@operation=\toks24
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count285
+))) (/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen175
+\Gin@req@width=\dimen176
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+\pgf@x=\dimen177
+\pgf@y=\dimen178
+\pgf@xa=\dimen179
+\pgf@ya=\dimen180
+\pgf@xb=\dimen181
+\pgf@yb=\dimen182
+\pgf@xc=\dimen183
+\pgf@yc=\dimen184
+\pgf@xd=\dimen185
+\pgf@yd=\dimen186
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count286
+\c@pgf@countb=\count287
+\c@pgf@countc=\count288
+\c@pgf@countd=\count289
+\t@pgf@toka=\toks25
+\t@pgf@tokb=\toks26
+\t@pgf@tokc=\toks27
+\pgf@sys@id@count=\count290
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count291
+\pgfsyssoftpath@bigbuffer@items=\count292
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
+Package xcolor Info: Model `RGB' extended on input line 1369.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen187
+\pgf@picmaxx=\dimen188
+\pgf@picminy=\dimen189
+\pgf@picmaxy=\dimen190
+\pgf@pathminx=\dimen191
+\pgf@pathmaxx=\dimen192
+\pgf@pathminy=\dimen193
+\pgf@pathmaxy=\dimen194
+\pgf@xx=\dimen195
+\pgf@xy=\dimen196
+\pgf@yx=\dimen197
+\pgf@yy=\dimen198
+\pgf@zx=\dimen199
+\pgf@zy=\dimen256
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen257
+\pgf@path@lasty=\dimen258
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen259
+\pgf@shorten@start@additional=\dimen260
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box62
+\pgf@hbox=\box63
+\pgf@layerbox@main=\box64
+\pgf@picture@serial@count=\count293
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen261
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen262
+\pgf@pt@y=\dimen263
+\pgf@pt@temp=\dimen264
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen265
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen266
+\pgf@sys@shading@range@num=\count294
+\pgf@shadingcount=\count295
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box65
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/xxcolor.sty
+Package: xxcolor 2003/10/24 ver 0.1
+\XC@nummixins=\count296
+\XC@countmixins=\count297
+) (/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2023-02-07 v7.00v Hypertext links for LaTeX
+ (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+) (/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2022-05-17 v2.50 Cross-referencing by name of section
+ (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count298
+)
+\@linkdim=\dimen267
+\Hy@linkcounter=\count299
+\Hy@pagecounter=\count300
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2023-02-07 v7.00v Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count301
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2023-02-07 v7.00v Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `bookmarks' set `true' on input line 4060.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 4060.
+Package hyperref Info: Option `implicit' set `false' on input line 4060.
+Package hyperref Info: Hyper figures OFF on input line 4177.
+Package hyperref Info: Link nesting OFF on input line 4182.
+Package hyperref Info: Hyper index ON on input line 4185.
+Package hyperref Info: Plain pages OFF on input line 4192.
+Package hyperref Info: Backreferencing OFF on input line 4197.
+Package hyperref Info: Implicit mode OFF; no redefinition of LaTeX internals.
+Package hyperref Info: Bookmarks ON on input line 4425.
+\c@Hy@tempcnt=\count302
+ (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4763.
+\XeTeXLinkMargin=\dimen268
+ (/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count303
+\Field@Width=\dimen269
+\Fld@charsize=\dimen270
+Package hyperref Info: Hyper figures OFF on input line 6042.
+Package hyperref Info: Link nesting OFF on input line 6047.
+Package hyperref Info: Hyper index ON on input line 6050.
+Package hyperref Info: backreferencing OFF on input line 6057.
+Package hyperref Info: Link coloring OFF on input line 6062.
+Package hyperref Info: Link coloring with OCG OFF on input line 6067.
+Package hyperref Info: PDF/A mode OFF on input line 6072.
+\Hy@abspage=\count304
+
+
+Package hyperref Message: Stopped early.
+
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2023-02-07 v7.00v Hyperref driver for pdfTeX
+ (/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+)
+\Fld@listcount=\count305
+\c@bookmark@seq@number=\count306
+ (/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+)) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaserequires.sty (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasecompatibility.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasefont.sty (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks28
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/sansmathaccent.sty
+Package: sansmathaccent 2020/01/31
+ (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2022/10/12 v3.38 KOMA-Script package (file load hooks)
+ (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+Package: scrlfile-hook 2022/10/12 v3.38 KOMA-Script package (using LaTeX hooks)
+ (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlogo.sty
+Package: scrlogo 2022/10/12 v3.38 KOMA-Script package (logo)
+))))) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetranslator.sty (/usr/share/texlive/texmf-dist/tex/latex/translator/translator.sty
+Package: translator 2021-05-31 v1.12d Easy translation of strings in LaTeX
+)) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasemisc.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetwoscreens.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseoverlay.sty
+\beamer@argscount=\count307
+\beamer@lastskipcover=\skip51
+\beamer@trivlistdepth=\count308
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetitle.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasesection.sty
+\c@lecture=\count309
+\c@part=\count310
+\c@section=\count311
+\c@subsection=\count312
+\c@subsubsection=\count313
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseframe.sty
+\beamer@framebox=\box66
+\beamer@frametitlebox=\box67
+\beamer@zoombox=\box68
+\beamer@zoomcount=\count314
+\beamer@zoomframecount=\count315
+\beamer@frametextheight=\dimen271
+\c@subsectionslide=\count316
+\beamer@frametopskip=\skip52
+\beamer@framebottomskip=\skip53
+\beamer@frametopskipautobreak=\skip54
+\beamer@framebottomskipautobreak=\skip55
+\beamer@envbody=\toks29
+\framewidth=\dimen272
+\c@framenumber=\count317
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseverbatim.sty
+\beamer@verbatimfileout=\write4
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseframesize.sty
+\beamer@splitbox=\box69
+\beamer@autobreakcount=\count318
+\beamer@autobreaklastheight=\dimen273
+\beamer@frametitletoks=\toks30
+\beamer@framesubtitletoks=\toks31
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseframecomponents.sty
+\beamer@footins=\box70
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasecolor.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasenotes.sty
+\beamer@frameboxcopy=\box71
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetoc.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetemplates.sty
+\beamer@sbttoks=\toks32
+ (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseauxtemplates.sty (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseboxes.sty
+\bmb@box=\box72
+\bmb@colorbox=\box73
+\bmb@boxwidth=\dimen274
+\bmb@boxheight=\dimen275
+\bmb@prevheight=\dimen276
+\bmb@temp=\dimen277
+\bmb@dima=\dimen278
+\bmb@dimb=\dimen279
+\bmb@prevheight=\dimen280
+)
+\beamer@blockheadheight=\dimen281
+)) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaselocalstructure.sty (/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks33
+)
+\beamer@bibiconwidth=\skip56
+\c@figure=\count319
+\c@table=\count320
+\abovecaptionskip=\skip57
+\belowcaptionskip=\skip58
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasenavigation.sty (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasenavigationsymbols.tex)
+\beamer@section@min@dim=\dimen282
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetheorems.sty (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2022/04/08 v2.17n AMS math features
+\@mathmargin=\skip59
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks34
+\ex@=\dimen283
+)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen284
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count321
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count322
+\leftroot@=\count323
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count324
+\DOTSCASE@=\count325
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box74
+\strutbox@=\box75
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen285
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count326
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count327
+\dotsspace@=\muskip17
+\c@parentequation=\count328
+\dspbrk@lvl=\count329
+\tag@help=\toks35
+\row@=\count330
+\column@=\count331
+\maxfields@=\count332
+\andhelp@=\toks36
+\eqnshift@=\dimen286
+\alignsep@=\dimen287
+\tagshift@=\dimen288
+\tagwidth@=\dimen289
+\totwidth@=\dimen290
+\lineht@=\dimen291
+\@envbody=\toks37
+\multlinegap=\skip60
+\multlinetaggap=\skip61
+\mathdisplay@stack=\toks38
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+) (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks39
+\thm@bodyfont=\toks40
+\thm@headfont=\toks41
+\thm@notefont=\toks42
+\thm@headpunct=\toks43
+\thm@preskip=\skip62
+\thm@postskip=\skip63
+\thm@headsep=\skip64
+\dth@everypar=\toks44
+)
+\c@theorem=\count333
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasethemes.sty)) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerthemedefault.sty (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerfontthemedefault.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemedefault.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerinnerthemedefault.sty
+\beamer@dima=\dimen292
+\beamer@dimb=\dimen293
+) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerouterthemedefault.sty))) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerthemeBoadilla.sty (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemerose.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerinnerthemerounded.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemedolphin.sty) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerouterthemeinfolines.sty)) (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemestructure.sty) (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2022/06/29 v1.29 mathematical typesetting tools
+ (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count334
+\calc@Bcount=\count335
+\calc@Adimen=\dimen294
+\calc@Bdimen=\dimen295
+\calc@Askip=\skip65
+\calc@Bskip=\skip66
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count336
+\calc@Cskip=\skip67
+) (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+)
+\g_MT_multlinerow_int=\count337
+\l_MT_multwidth_dim=\dimen296
+\origjot=\skip68
+\l_MT_shortvdotswithinadjustabove_dim=\dimen297
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen298
+\l_MT_above_intertext_sep=\dimen299
+\l_MT_below_intertext_sep=\dimen300
+\l_MT_above_shortintertext_sep=\dimen301
+\l_MT_below_shortintertext_sep=\dimen302
+\xmathstrut@box=\box76
+\xmathstrut@dim=\dimen303
+) (/usr/share/texlive/texmf-dist/tex/latex/outlines/outlines.sty
+Package: outlines 2012/1/23 1.1 Ch. Pecheur
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)) (/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip69
+\subfigcapskip=\skip70
+\subfigcaptopadj=\dimen304
+\subfigbottomskip=\skip71
+\subfigcapmargin=\dimen305
+\subfiglabelskip=\skip72
+\c@subfigure=\count338
+\c@lofdepth=\count339
+\c@subtable=\count340
+\c@lotdepth=\count341
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip73
+\subfig@bottom=\skip74
+) (/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
+ (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box77
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen306
+\pgf@nodesepend=\dimen307
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen308
+\pgffor@skip=\dimen309
+\pgffor@stack=\toks45
+\pgffor@toks=\toks46
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count342
+\pgfplotmarksize=\dimen310
+)
+\tikz@lastx=\dimen311
+\tikz@lasty=\dimen312
+\tikz@lastxsaved=\dimen313
+\tikz@lastysaved=\dimen314
+\tikz@lastmovetox=\dimen315
+\tikz@lastmovetoy=\dimen316
+\tikzleveldistance=\dimen317
+\tikzsiblingdistance=\dimen318
+\tikz@figbox=\box78
+\tikz@figbox@bg=\box79
+\tikz@tempbox=\box80
+\tikz@tempbox@bg=\box81
+\tikztreelevel=\count343
+\tikznumberofchildren=\count344
+\tikznumberofcurrentchild=\count345
+\tikz@fig@count=\count346
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count347
+\pgfmatrixcurrentcolumn=\count348
+\pgf@matrix@numberofcolumns=\count349
+)
+\tikz@expandcount=\count350
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks47
+\t@pgfplots@tokb=\toks48
+\t@pgfplots@tokc=\toks49
+\pgfplots@tmpa=\dimen319
+\c@pgfplots@coordindex=\count351
+\c@pgfplots@scanlineindex=\count352
+ (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
+Package pgfplots: loading complementary utilities for your pgf version...
+\t@pgf@toka=\toks50
+\t@pgf@tokb=\toks51
+\t@pgf@tokc=\toks52
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
+\c@pgfplotsarray@tmp=\count353
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
+\c@pgfplotstable@counta=\count354
+\t@pgfplotstable@a=\toks53
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count355
+ (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen320
+\pgfdecoratedremainingdistance=\dimen321
+\pgfdecoratedinputsegmentcompleteddistance=\dimen322
+\pgfdecoratedinputsegmentremainingdistance=\dimen323
+\pgf@decorate@distancetomove=\dimen324
+\pgf@decorate@repeatstate=\count356
+\pgfdecorationsegmentamplitude=\dimen325
+\pgfdecorationsegmentlength=\dimen326
+)
+\tikz@lib@dec@box=\box82
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
+\pgfplots@numplots=\count357
+\pgfplots@xmin@reg=\dimen327
+\pgfplots@xmax@reg=\dimen328
+\pgfplots@ymin@reg=\dimen329
+\pgfplots@ymax@reg=\dimen330
+\pgfplots@zmin@reg=\dimen331
+\pgfplots@zmax@reg=\dimen332
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
+File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count358
+\algocf@hangindent=\skip75
+ (/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count359
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+) (/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip76
+\skiplinenumber=\skip77
+\skiprule=\skip78
+\skiphlne=\skip79
+\skiptext=\skip80
+\skiplength=\skip81
+\algomargin=\skip82
+\skipalgocfslide=\skip83
+\algowidth=\dimen333
+\inoutsize=\dimen334
+\inoutindent=\dimen335
+\interspacetitleruled=\dimen336
+\interspacealgoruled=\dimen337
+\interspacetitleboxruled=\dimen338
+\algocf@ruledwidth=\skip84
+\algocf@inoutbox=\box83
+\algocf@inputbox=\box84
+\AlCapSkip=\skip85
+\AlCapHSkip=\skip86
+\algoskipindent=\skip87
+\algocf@nlbox=\box85
+\algocf@hangingbox=\box86
+\algocf@untilbox=\box87
+\algocf@skipuntil=\skip88
+\algocf@capbox=\box88
+\algocf@lcaptionbox=\skip89
+\algoheightruledefault=\skip90
+\algoheightrule=\skip91
+\algotitleheightruledefault=\skip92
+\algotitleheightrule=\skip93
+\c@algocfline=\count360
+\c@algocfproc=\count361
+\c@algocf=\count362
+\algocf@algoframe=\box89
+\algocf@algobox=\box90
+) (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/03/12 v3.6j Customizing captions (AR)
+ (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/03/12 v2.4 caption3 kernel (AR)
+\caption@tempdima=\dimen339
+\captionmargin=\dimen340
+\caption@leftmargin=\dimen341
+\caption@rightmargin=\dimen342
+\caption@width=\dimen343
+\caption@indent=\dimen344
+\caption@parindent=\dimen345
+\caption@hangindent=\dimen346
+Package caption Info: beamer document class detected.
+ (/usr/share/texlive/texmf-dist/tex/latex/caption/caption-beamer.sto
+File: caption-beamer.sto 2022/01/06 v2.0c Adaption of the caption package to the beamer document classes (AR)
+))
+\c@caption@flags=\count363
+\c@continuedfloat=\count364
+Package caption Info: hyperref package is loaded.
+Package caption Info: Hyperref support is turned off
+(caption)             because hyperref has stopped early.
+Package caption Info: subfigure package is loaded.
+)
+\sympureletters=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 21.
+ (/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2022/01/05 v1.2f Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup7
+\symboldletters=\mathgroup8
+\symboldsymbols=\mathgroup9
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+\symboldpureletters=\mathgroup10
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count365
+\lst@gtempboxa=\box91
+\lst@token=\toks54
+\lst@length=\count366
+\lst@currlwidth=\dimen347
+\lst@column=\count367
+\lst@pos=\count368
+\lst@lostspace=\dimen348
+\lst@width=\dimen349
+\lst@newlines=\count369
+\lst@lineno=\count370
+\lst@maxwidth=\dimen350
+ (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count371
+\lst@skipnumbers=\count372
+\lst@framebox=\box92
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
+))
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
+ (/usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2022/12/12 v2.7 Yet another Pygments shim for LaTeX
+ (/usr/share/texlive/texmf-dist/tex/latex/fvextra/fvextra.sty
+Package: fvextra 2022/11/30 v1.5 fvextra - extensions and patches for fancyvrb
+ (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2023/01/19 4.5a verbatim text (tvz,hv)
+\FV@CodeLineNo=\count373
+\FV@InFile=\read3
+\FV@TabBox=\box93
+\c@FancyVerbLine=\count374
+\FV@StepNumber=\count375
+\FV@OutFile=\write5
+) (/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
+) (/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2023/01/19 line numbers on paragraphs v5.1
+\linenopenalty=\count376
+\output=\toks55
+\linenoprevgraf=\count377
+\linenumbersep=\dimen351
+\linenumberwidth=\dimen352
+\c@linenumber=\count378
+\c@pagewiselinenumber=\count379
+\c@LN@truepage=\count380
+\c@internallinenumber=\count381
+\c@internallinenumbers=\count382
+\quotelinenumbersep=\dimen353
+\bframerule=\dimen354
+\bframesep=\dimen355
+\bframebox=\box94
+\linenoamsmath@ams@eqpen=\count383
+LaTeX Info: Redefining \\ on input line 3131.
+)
+\c@FV@TrueTabGroupLevel=\count384
+\c@FV@TrueTabCounter=\count385
+\FV@TabBox@Group=\box95
+\FV@TmpLength=\skip94
+\c@FV@HighlightLinesStart=\count386
+\c@FV@HighlightLinesStop=\count387
+\FV@LoopCount=\count388
+\FV@NCharsBox=\box96
+\FV@BreakIndent=\dimen356
+\FV@BreakIndentNChars=\count389
+\FV@BreakSymbolSepLeft=\dimen357
+\FV@BreakSymbolSepLeftNChars=\count390
+\FV@BreakSymbolSepRight=\dimen358
+\FV@BreakSymbolSepRightNChars=\count391
+\FV@BreakSymbolIndentLeft=\dimen359
+\FV@BreakSymbolIndentLeftNChars=\count392
+\FV@BreakSymbolIndentRight=\dimen360
+\FV@BreakSymbolIndentRightNChars=\count393
+\c@FancyVerbLineBreakLast=\count394
+\FV@LineBox=\box97
+\FV@LineIndentBox=\box98
+\c@FV@BreakBufferDepth=\count395
+\FV@LineWidth=\dimen361
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 77.
+) (/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
+ (/usr/share/texlive/texmf-dist/tex/generic/catchfile/catchfile.sty
+Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)
+
+Package ifplatform Warning: 
+    shell escape is disabled, so I can only detect \ifwindows.
+
+) (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+\integerpart=\count396
+\decimalpart=\count397
+)
+Package: xstring 2023/01/14 v1.85 String manipulations (CT)
+) (/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip95
+\fb@frw=\dimen362
+\fb@frh=\dimen363
+\FrameRule=\dimen364
+\FrameSep=\dimen365
+) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count398
+\float@exts=\toks56
+\float@box=\box99
+\@float@everytoks=\toks57
+\@floatcapt=\box100
+)
+\minted@appexistsfile=\read4
+\minted@bgbox=\box101
+\minted@code=\write6
+\c@minted@FancyVerbLineTemp=\count399
+\c@minted@pygmentizecounter=\count400
+\@float@every@listing=\toks58
+\c@listing=\count401
+)
+runsystem(mkdir -p _minted-MPI-NCI-2026)...disabled (restricted).
+
+
+
+/home/fredf/Desktop/NCI/2026/mpi/docs/slides/MPI-NCI-2026.tex:23: Package minted Error: You must invoke LaTeX with the -shell-escape flag.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 \usepackage
+                {hyperref}
+Pass the -shell-escape flag to LaTeX. Refer to the minted.sty documentation for more information.
+
+(/usr/share/texlive/texmf-dist/tex/latex/cclicenses/cclicenses.sty
+Package: cclicenses 2005/05/20 v0.4 CC licenses typesetting
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+\c@r@tfl@t=\count402
+\rotFPtop=\skip96
+\rotFPbot=\skip97
+\rot@float@box=\box102
+\rot@mess@toks=\toks59
+)
+\chardim=\dimen366
+\hdim=\dimen367
+\htmp=\dimen368
+\hpos=\count403
+\vpos=\count404
+) (/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write7
+ Excluding comment 'comment') (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.misc.code.tex
+File: pgflibraryshapes.misc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2023/02/13 3.86 The Babel package
+\babel@savecnt=\count405
+\U@D=\dimen369
+\l@unhyphenated=\language85
+ (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read5
+LaTeX Info: Redefining \textlatin on input line 4088.
+\bbl@dirlevel=\count406
+ (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language21). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language21). Reported on input line 108.
+)) (/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 11.
+) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks60
+\inpenc@posthook=\toks61
+) (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
+) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 112.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
+))
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 55.
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+) (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+runsystem(which pygmentize && touch MPI-NCI-2026.aex)...disabled (restricted).
+
+
+
+/home/fredf/Desktop/NCI/2026/mpi/docs/slides/MPI-NCI-2026.tex:75: Package minted Error: You must have `pygmentize' installed to use this package.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.75 \begin{document}
+                     
+Refer to the installation instructions in the minted documentation for more information.
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count407
+\l__pdf_internal_box=\box103
+)
+No file MPI-NCI-2026.aux.
+\openout1 = `MPI-NCI-2026.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: includehead includefoot 
+* h-part:(L,W,R)=(10.95003pt, 342.2953pt, 10.95003pt)
+* v-part:(T,H,B)=(0.0pt, 273.14662pt, 0.0pt)
+* \paperwidth=364.19536pt
+* \paperheight=273.14662pt
+* \textwidth=342.2953pt
+* \textheight=244.6939pt
+* \oddsidemargin=-61.31996pt
+* \evensidemargin=-61.31996pt
+* \topmargin=-72.26999pt
+* \headheight=14.22636pt
+* \headsep=0.0pt
+* \topskip=11.0pt
+* \footskip=14.22636pt
+* \marginparwidth=4.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count408
+\scratchdimen=\dimen370
+\scratchbox=\box104
+\nofMPsegments=\count409
+\nofMParguments=\count410
+\everyMPshowfont=\toks62
+\MPscratchCnt=\count411
+\MPscratchDim=\dimen371
+\MPnumerator=\count412
+\makeMPintoPDFobject=\count413
+\everyMPtoPDFconversion=\toks63
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+Package hyperref Info: Link coloring OFF on input line 75.
+\@outlinefile=\write8
+\openout8 = `MPI-NCI-2026.out'.
+
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 75.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 75.
+\symnumbers=\mathgroup11
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 75.
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `pureletters' in the math version `normal' on input line 75.
+LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
+(Font)                  OT1/mathkerncmss/m/sl --> T1/phv/m/it on input line 75.
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `pureletters' in the math version `bold' on input line 75.
+LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
+(Font)                  OT1/mathkerncmss/bx/sl --> T1/phv/m/it on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  OT1/cmss/m/n --> T1/ptm/m/n on input line 75.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 75.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> T1/phv/m/n on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> T1/phv/m/n on input line 75.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> T1/phv/m/it on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> T1/phv/m/it on input line 75.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> T1/pcr/m/n on input line 75.
+LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
+(Font)                  T1/phv/m/n --> T1/phv/b/n on input line 75.
+LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
+(Font)                  T1/phv/m/it --> T1/phv/b/it on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
+(Font)                  OT1/cmss/b/n --> T1/ptm/b/n on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  T1/phv/b/n --> T1/phv/b/n on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  T1/phv/m/n --> T1/phv/b/n on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  T1/phv/m/it --> T1/phv/b/it on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  T1/pcr/m/n --> T1/pcr/b/n on input line 75.
+LaTeX Font Info:    Redeclaring symbol font `boldpureletters' on input line 75.
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `boldpureletters' in the math version `normal' on input line 75.
+LaTeX Font Info:    Overwriting symbol font `boldpureletters' in version `normal'
+(Font)                  OT1/mathkerncmss/bx/sl --> T1/phv/bx/it on input line 75.
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `boldpureletters' in the math version `bold' on input line 75.
+LaTeX Font Info:    Overwriting symbol font `boldpureletters' in version `bold'
+(Font)                  OT1/mathkerncmss/bx/sl --> T1/phv/bx/it on input line 75.
+ (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
+Dictionary: translator-basic-dictionary, Language: English 
+) (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
+Dictionary: translator-bibliography-dictionary, Language: English 
+) (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-environment-dictionary-English.dict
+Dictionary: translator-environment-dictionary, Language: English 
+) (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-months-dictionary-English.dict
+Dictionary: translator-months-dictionary, Language: English 
+) (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-numbers-dictionary-English.dict
+Dictionary: translator-numbers-dictionary, Language: English 
+) (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-theorem-dictionary-English.dict
+Dictionary: translator-theorem-dictionary, Language: English 
+)
+
+Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
+ on input line 75.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: rotating package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count414
+(./MPI-NCI-2026.nav)
+LaTeX Font Info:    Trying to load font information for OMS+phv on input line 75.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsphv.fd
+File: omsphv.fd 
+)
+LaTeX Font Info:    Font shape `OMS/phv/b/n' in size <6> not available
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 75.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 79.
+<NCI_logo.png, id=14, 160.6pt x 68.4156pt>
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 79.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} <./NCI_logo.png>]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 84.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 84.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 84.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 84.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <10.95> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 84.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10.95> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 84.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <8> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 84.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <8> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 84.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <6> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 84.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <6> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 84.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 84.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [2
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 89.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [3
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 103.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [4
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 103.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [5
+
+]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 124.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <5> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 124.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <5> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 124.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 124.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [6
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 124.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [7
+
+]
+
+LaTeX Warning: Citation `evans2022survey' on page 8 undefined on input line 140.
+
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 140.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 140.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <10> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 140.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 140.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <7> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 140.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <7> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 140.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 140.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <9> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 140.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <9> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 140.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 140.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[8
+
+]
+
+LaTeX Warning: Citation `evans2022survey' on page 9 undefined on input line 140.
+
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 140.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[9
+
+]
+
+LaTeX Warning: Citation `evans2022survey' on page 10 undefined on input line 140.
+
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 140.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[10
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 162.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [11
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 175.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [12
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 175.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [13
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 175.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [14
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 194.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [15
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 212.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [16
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 212.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [17
+
+]
+<Monte-Carlo01.jpg, id=592, 301.125pt x 301.125pt>
+File: Monte-Carlo01.jpg Graphic file (type jpg)
+<use Monte-Carlo01.jpg>
+Package pdftex.def Info: Monte-Carlo01.jpg  used on input line 221.
+(pdftex.def)             Requested size: 155.37746pt x 155.37048pt.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <14.4> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 221.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 221.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 221.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 221.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [18
+
+ <./Monte-Carlo01.jpg>]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -S default -f latex -P commandprefix=PYG > _minted-MPI-NCI-2026/default.pygstyle)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:13: Package catchfile Error: File `_minted-MPI-NCI-2026/default.pygstyle' not found.
+
+See the catchfile package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 \end{minted}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+runsystem(pygmentize -S default -f latex -P commandprefix=PYG > _minted-MPI-NCI-2026/default.pygstyle)...disabled (restricted).
+
+
+./MPI-NCI-2026.vrb:13: Package catchfile Error: File `_minted-MPI-NCI-2026/default.pygstyle' not found.
+
+See the catchfile package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 \end{minted}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+./MPI-NCI-2026.vrb:13: Package minted Error: Cannot find Pygments style default.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 \end{minted}
+                 
+Cannot find Pygments style default
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/CD8B24815C6B4FEC7AE1300EA219F25EF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+./MPI-NCI-2026.vrb:13: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 239.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [19
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/65B2C3991428AC9C140EA6978F1DB0E5F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:19: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 262.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [20
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 273.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [21
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 2.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <12> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 2.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <12> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 2.
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/76A6F74525D145FB419D8E840DF8589AF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:12: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 288.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [22
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 296.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [23
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 306.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [24
+
+]
+<communicator.png, id=794, 305.14pt x 263.98625pt>
+File: communicator.png Graphic file (type png)
+<use communicator.png>
+Package pdftex.def Info: communicator.png  used on input line 314.
+(pdftex.def)             Requested size: 205.37926pt x 177.68756pt.
+
+
+LaTeX Warning: Citation `mpi40' on page 25 undefined on input line 314.
+
+
+LaTeX Warning: Citation `mpi40' on page 25 undefined on input line 314.
+
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 314.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[25
+
+ <./communicator.png>]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/F900978B659752461035C50222A38DD0F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:17: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 335.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [26
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/A4644500F19B5D2E1C9CBEA0BF10F431F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:17: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 356.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [27
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/56278EED045C8DCE41E9CDAB8317E4FEF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:12: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 375.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [28
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 383.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [29
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/9BAE01A17A00E6B1BD43A06B7A49EFA6F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:23: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 410.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [30
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 414.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [31
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 424.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [32
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 438.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [33
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 453.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [34
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 459.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [35
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 469.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [36
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 493.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [37
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 497.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [38
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 505.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [39
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 505.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [40
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 514.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [41
+
+]
+<MPI_operation.png, id=1316, 191.71625pt x 251.94125pt>
+File: MPI_operation.png Graphic file (type png)
+<use MPI_operation.png>
+Package pdftex.def Info: MPI_operation.png  used on input line 534.
+(pdftex.def)             Requested size: 131.44072pt x 172.74017pt.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 534.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [42
+
+ <./MPI_operation.png>]
+
+LaTeX Warning: Citation `mpi40' on page 43 undefined on input line 553.
+
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 553.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[43
+
+] Excluding 'comment' comment.
+<Blocking_Send.png, id=1408, 543.02875pt x 272.01625pt>
+File: Blocking_Send.png Graphic file (type png)
+<use Blocking_Send.png>
+Package pdftex.def Info: Blocking_Send.png  used on input line 582.
+(pdftex.def)             Requested size: 342.2953pt x 171.47075pt.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 582.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [44
+
+ <./Blocking_Send.png>]
+<NonBlocking_Send.png, id=1449, 543.02875pt x 350.30875pt>
+File: NonBlocking_Send.png Graphic file (type png)
+<use NonBlocking_Send.png>
+Package pdftex.def Info: NonBlocking_Send.png  used on input line 594.
+(pdftex.def)             Requested size: 273.83728pt x 176.6613pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{standard_send}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.594 \end{frame}
+                 
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 594.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [45
+
+ <./NonBlocking_Send.png>]
+<Persistent_Send.png, id=1489, 543.02875pt x 420.57124pt>
+File: Persistent_Send.png Graphic file (type png)
+<use Persistent_Send.png>
+Package pdftex.def Info: Persistent_Send.png  used on input line 605.
+(pdftex.def)             Requested size: 273.83728pt x 212.0948pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{standard_send}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.605 \end{frame}
+                 
+Overfull \vbox (6.01852pt too high) detected at line 605
+ []
+
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 605.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[46
+
+ <./Persistent_Send.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 620.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [47
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 630.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [48
+
+]
+<Blocking_operation.png, id=1606, 427.5975pt x 211.79124pt>
+File: Blocking_operation.png Graphic file (type png)
+<use Blocking_operation.png>
+Package pdftex.def Info: Blocking_operation.png  used on input line 639.
+(pdftex.def)             Requested size: 273.83728pt x 135.63318pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{standard_send}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.639 \end{frame}
+                 
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 639.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [49
+
+ <./Blocking_operation.png>]
+<Nonblocking_operation.png, id=1635, 773.89125pt x 221.82875pt>
+File: Nonblocking_operation.png Graphic file (type png)
+<use Nonblocking_operation.png>
+Package pdftex.def Info: Nonblocking_operation.png  used on input line 648.
+(pdftex.def)             Requested size: 273.83728pt x 78.49419pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{standard_send}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.648 \end{frame}
+                 
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 648.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [50
+
+ <./Nonblocking_operation.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 652.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [51
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 666.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [52
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 679.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [53
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+<Submesh.png, id=1765, 539.01375pt x 282.05376pt>
+File: Submesh.png Graphic file (type png)
+<use Submesh.png>
+Package pdftex.def Info: Submesh.png  used on input line 4.
+(pdftex.def)             Requested size: 239.60567pt x 125.38225pt.
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/34A27315E14C71F930A0895B0EE3B1B6F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:13: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 695.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [54
+
+ <./Submesh.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 718.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [55
+
+]
+File: Blocking_Send.png Graphic file (type png)
+<use Blocking_Send.png>
+Package pdftex.def Info: Blocking_Send.png  used on input line 728.
+(pdftex.def)             Requested size: 342.2953pt x 171.47075pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{send-recv}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.728 \end{frame}
+                 
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 728.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [56
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 743.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [57
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 755.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [58
+
+]
+<MPI_Send_delay.png, id=1936, 544.0325pt x 272.01625pt>
+File: MPI_Send_delay.png Graphic file (type png)
+<use MPI_Send_delay.png>
+Package pdftex.def Info: MPI_Send_delay.png  used on input line 764.
+(pdftex.def)             Requested size: 273.83728pt x 136.92506pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{send-recv}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.764 \end{frame}
+                 
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 764.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [59
+
+ <./MPI_Send_delay.png>]
+<Standard_send.png, id=1964, 472.76625pt x 231.86626pt>
+File: Standard_send.png Graphic file (type png)
+<use Standard_send.png>
+Package pdftex.def Info: Standard_send.png  used on input line 774.
+(pdftex.def)             Requested size: 205.37926pt x 100.73009pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{standard_send}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.774 \end{frame}
+                 
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 774.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [60
+
+ <./Standard_send.png>]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/306B393A0C6B5C26B6E2126D6CEC69A1F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:22: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 799.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [61
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 810.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [62
+
+]
+<Buffer_send.png, id=2058, 472.76625pt x 231.86626pt>
+File: Buffer_send.png Graphic file (type png)
+<use Buffer_send.png>
+Package pdftex.def Info: Buffer_send.png  used on input line 820.
+(pdftex.def)             Requested size: 205.37926pt x 100.73009pt.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 820.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [63
+
+ <./Buffer_send.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 829.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [64
+
+]
+<Sync_send.png, id=2113, 472.76625pt x 231.86626pt>
+File: Sync_send.png Graphic file (type png)
+<use Sync_send.png>
+Package pdftex.def Info: Sync_send.png  used on input line 838.
+(pdftex.def)             Requested size: 205.37926pt x 100.73009pt.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 838.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [65
+
+ <./Sync_send.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 849.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [66
+
+]
+<MPI_deadlock.png, id=2168, 522.95375pt x 187.70125pt>
+File: MPI_deadlock.png Graphic file (type png)
+<use MPI_deadlock.png>
+Package pdftex.def Info: MPI_deadlock.png  used on input line 859.
+(pdftex.def)             Requested size: 273.83728pt x 98.28972pt.
+
+
+LaTeX Warning: Citation `mpi40' on page 67 undefined on input line 859.
+
+
+LaTeX Warning: Citation `mpi40' on page 67 undefined on input line 859.
+
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 859.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[67
+
+ <./MPI_deadlock.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 871.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [68
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/3D643530F08913C73C0A206618E9DABCF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:23: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 897.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [69
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 905.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [70
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/2C2018C0C676EC019B5D9B6FBEA50878F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:16: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 926.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [71
+
+]
+<MPI_Communicate.png, id=2314, 470.75874pt x 573.14125pt>
+File: MPI_Communicate.png Graphic file (type png)
+<use MPI_Communicate.png>
+Package pdftex.def Info: MPI_Communicate.png  used on input line 934.
+(pdftex.def)             Requested size: 171.14764pt x 208.36836pt.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 934.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [72
+
+ <./MPI_Communicate.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 939.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [73
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 949.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [74
+
+]
+File: NonBlocking_Send.png Graphic file (type png)
+<use NonBlocking_Send.png>
+Package pdftex.def Info: NonBlocking_Send.png  used on input line 957.
+(pdftex.def)             Requested size: 205.37926pt x 132.4933pt.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 957.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [75
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/709257C49D583EDDC9191DDBBCD043A0F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:23: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 983.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [76
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 997.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [77
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/EAF1B25CC1C217DA99D82365BEA6F29DF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:16: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/E1818FF9698673ACA21E08F7194F72ACF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+./MPI-NCI-2026.vrb:34: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1034.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [78
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1043.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [79
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/1A8DA5AD3814F63687AA26AE447DB580F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:16: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/40EA0F85E1E5B6BEAF349B910E7E543DF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+./MPI-NCI-2026.vrb:34: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1081.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [80
+
+]
+<NonBlocking_Recv.png, id=2612, 559.08875pt x 360.34625pt>
+File: NonBlocking_Recv.png Graphic file (type png)
+<use NonBlocking_Recv.png>
+Package pdftex.def Info: NonBlocking_Recv.png  used on input line 1090.
+(pdftex.def)             Requested size: 205.37926pt x 132.3693pt.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1090.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [81
+
+ <./NonBlocking_Recv.png>]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+
+LaTeX Warning: Citation `mpi40' on page 82 undefined on input line 2.
+
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/254C1DE11AFE83547F98CFB0AA34594DF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+./MPI-NCI-2026.vrb:20: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1113.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [82
+
+]
+<Submesh_int.png, id=2678, 603.25375pt x 272.01625pt>
+File: Submesh_int.png Graphic file (type png)
+<use Submesh_int.png>
+Package pdftex.def Info: Submesh_int.png  used on input line 1121.
+(pdftex.def)             Requested size: 308.06367pt x 138.90907pt.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1121.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [83
+
+ <./Submesh_int.png>]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/D31C3A4683EBB41357B7C612D94C34A5F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:22: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1147.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [84
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1151.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [85
+
+]
+File: Persistent_Send.png Graphic file (type png)
+<use Persistent_Send.png>
+Package pdftex.def Info: Persistent_Send.png  used on input line 1160.
+(pdftex.def)             Requested size: 273.83728pt x 212.0948pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{standard_send}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1160 \end{frame}
+                  
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1160.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [86
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1170.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [87
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/ECC567817509C57C200207EE1DAB428BF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:23: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1196.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [88
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/B7464EFAF6BC5165D997C2B105C56668F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:16: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/8C024DB48F91C9B4FCF8B9E90F30D268F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+./MPI-NCI-2026.vrb:34: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1233.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [89
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1240.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [90
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1246.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [91
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/1E8B81C89A6C5D12CF615FC1DEDD1987F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:16: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1266.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [92
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/5951479D34BC9C951CBE8534478A05E2F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:27: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.27 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1296.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [93
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1300.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [94
+
+]
+<L_par_whole_2D.pdf, id=3038, 504.88625pt x 403.5075pt>
+File: L_par_whole_2D.pdf Graphic file (type pdf)
+<use L_par_whole_2D.pdf>
+Package pdftex.def Info: L_par_whole_2D.pdf  used on input line 1308.
+(pdftex.def)             Requested size: 273.83728pt x 218.8513pt.
+
+
+LaTeX Warning: Citation `stals2019algorithm' on page 95 undefined on input line 1308.
+
+
+LaTeX Warning: Citation `stals2019algorithm' on page 95 undefined on input line 1308.
+
+
+Overfull \vbox (15.64061pt too high) detected at line 1308
+ []
+
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1308.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[95
+
+ <./L_par_whole_2D.pdf>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1314.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [96
+
+]
+<Submesh_Res.png, id=3097, 693.59125pt x 415.5525pt>
+File: Submesh_Res.png Graphic file (type png)
+<use Submesh_Res.png>
+Package pdftex.def Info: Submesh_Res.png  used on input line 1323.
+(pdftex.def)             Requested size: 273.83728pt x 164.06851pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{standard_send}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1323 \end{frame}
+                  
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1323.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [97
+
+ <./Submesh_Res.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1339.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [98
+
+]
+<broadcast.png, id=3161, 644.4075pt x 232.87pt>
+File: broadcast.png Graphic file (type png)
+<use broadcast.png>
+Package pdftex.def Info: broadcast.png  used on input line 1350.
+(pdftex.def)             Requested size: 273.83728pt x 98.95955pt.
+
+
+LaTeX Warning: Citation `mpi40' on page 99 undefined on input line 1350.
+
+
+LaTeX Warning: Citation `mpi40' on page 99 undefined on input line 1350.
+
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1350.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[99
+
+ <./broadcast.png>]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/99FD2361D8826D4573B61A05E54FB5FFF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:22: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1375.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [100
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1384.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [101
+
+]
+<Reduce.png, id=3255, 644.4075pt x 232.87pt>
+File: Reduce.png Graphic file (type png)
+<use Reduce.png>
+Package pdftex.def Info: Reduce.png  used on input line 1393.
+(pdftex.def)             Requested size: 273.83728pt x 98.95955pt.
+
+
+LaTeX Warning: Citation `mpi40' on page 102 undefined on input line 1393.
+
+
+LaTeX Warning: Citation `mpi40' on page 102 undefined on input line 1393.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{fork}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1393 \end{frame}
+                  
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1393.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [102
+
+ <./Reduce.png>]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1412.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [103
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/5B9CCBBAF4769F047664913CF9E6016AF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:16: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1433.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [104
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1447.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [105
+
+]
+<Allreduce.png, id=3375, 644.4075pt x 222.8325pt>
+File: Allreduce.png Graphic file (type png)
+<use Allreduce.png>
+Package pdftex.def Info: Allreduce.png  used on input line 1456.
+(pdftex.def)             Requested size: 273.83728pt x 94.69405pt.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1456.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [106
+
+ <./Allreduce.png>]
+<gather-scatter.png, id=3404, 644.4075pt x 232.87pt>
+File: gather-scatter.png Graphic file (type png)
+<use gather-scatter.png>
+Package pdftex.def Info: gather-scatter.png  used on input line 1466.
+(pdftex.def)             Requested size: 273.83728pt x 98.95955pt.
+
+
+LaTeX Warning: Citation `mpi40' on page 107 undefined on input line 1466.
+
+
+LaTeX Warning: Citation `mpi40' on page 107 undefined on input line 1466.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{fork}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1466 \end{frame}
+                  
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1466.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [107
+
+ <./gather-scatter.png>]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1484.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [108
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/1EB8949165AEC0F0281BE0F7A52CBD0DF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:10: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1500.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [109
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1509.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [110
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1513.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [111
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1522.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [112
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1529.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [113
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1536.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [114
+
+]
+<MPI_WIN.png, id=3639, 482.80376pt x 231.86626pt>
+File: MPI_WIN.png Graphic file (type png)
+<use MPI_WIN.png>
+Package pdftex.def Info: MPI_WIN.png  used on input line 1545.
+(pdftex.def)             Requested size: 205.37926pt x 98.63206pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fork}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1545 \end{frame}
+                  
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1545.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [115
+
+ <./MPI_WIN.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1555.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [116
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/E4DD8B05272E19F08A32A48C569475C2F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:22: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1580.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [117
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1588.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [118
+
+]
+<Submesh_Win.png, id=3759, 673.51625pt x 241.90375pt>
+File: Submesh_Win.png Graphic file (type png)
+<use Submesh_Win.png>
+Package pdftex.def Info: Submesh_Win.png  used on input line 1599.
+(pdftex.def)             Requested size: 342.2953pt x 122.9411pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fork}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1599 \end{frame}
+                  
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1599.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [119
+
+ <./Submesh_Win.png>]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1616.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [120
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/068B937CC6A4436513344EB9F9784AB5F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:10: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1629.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [121
+
+]
+<RMA_window.png, id=3853, 668.4975pt x 246.9225pt>
+File: RMA_window.png Graphic file (type png)
+<use RMA_window.png>
+Package pdftex.def Info: RMA_window.png  used on input line 1638.
+(pdftex.def)             Requested size: 342.2953pt x 126.43744pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fork}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1638 \end{frame}
+                  
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1638.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [122
+
+ <./RMA_window.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1648.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [123
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/B28BF60339A72F022C9429C460BB91B1F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:16: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1673.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [124
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1681.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [125
+
+]
+<RMA_Fence.png, id=3984, 559.08875pt x 370.38374pt>
+File: RMA_Fence.png Graphic file (type png)
+<use RMA_Fence.png>
+Package pdftex.def Info: RMA_Fence.png  used on input line 1689.
+(pdftex.def)             Requested size: 273.83728pt x 181.41614pt.
+
+
+LaTeX Warning: Citation `mpi40' on page 126 undefined on input line 1689.
+
+
+LaTeX Warning: Citation `mpi40' on page 126 undefined on input line 1689.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{fork}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1689 \end{frame}
+                  
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1689.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [126
+
+ <./RMA_Fence.png>]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/835B0B86E685468A4D46AE18762CAD8AF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:21: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.21 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1713.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [127
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1717.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [128
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1722.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [129
+
+]
+
+LaTeX Warning: Citation `mpi40' on page 130 undefined on input line 1729.
+
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1729.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[130
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1739.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [131
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/108A1429DE2BA613A71922A021FC4625F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:19: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+
+LaTeX Warning: Citation `mpi40' on page 132 undefined on input line 1762.
+
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1762.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[132
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1771.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [133
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1779.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [134
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1785.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [135
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1795.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [136
+
+]
+<Submesh_IO.png, id=4301, 673.51625pt x 573.14125pt>
+File: Submesh_IO.png Graphic file (type png)
+<use Submesh_IO.png>
+Package pdftex.def Info: Submesh_IO.png  used on input line 1804.
+(pdftex.def)             Requested size: 222.48985pt x 189.32959pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fork}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1804 \end{frame}
+                  
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1804.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [137
+
+ <./Submesh_IO.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1818.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [138
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1826.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [139
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+
+LaTeX Warning: Citation `mpi40' on page 140 undefined on input line 2.
+
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/A0E5A6310C6239A268723110A777AD3AF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+./MPI-NCI-2026.vrb:21: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.21 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1850.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [140
+
+]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1861.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [141
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+
+LaTeX Warning: Citation `mpi40' on page 142 undefined on input line 2.
+
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/94D44AE9691EF4D063CE32EC3676A54EF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+./MPI-NCI-2026.vrb:16: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1880.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [142
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+
+LaTeX Warning: Citation `mpi40' on page 143 undefined on input line 2.
+
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/1FBCEC5369EE3D1744B603D16AEA672CF40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+./MPI-NCI-2026.vrb:22: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1905.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [143
+
+]
+<File-IO.drawio.png, id=4533, 390.45876pt x 142.5325pt>
+File: File-IO.drawio.png Graphic file (type png)
+<use File-IO.drawio.png>
+Package pdftex.def Info: File-IO.drawio.png  used on input line 1914.
+(pdftex.def)             Requested size: 222.48985pt x 81.21826pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fork}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1914 \end{frame}
+                  
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1914.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [144
+
+ <./File-IO.drawio.png>]
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1921.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [145
+
+]
+\openout4 = `MPI-NCI-2026.vrb'.
+
+ (./MPI-NCI-2026.vrb
+\openout5 = `MPI-NCI-2026.pyg'.
+
+runsystem(pygmentize -l 'C' -f latex -P commandprefix=PYG -F tokenmerge -P stripnl='False' -o _minted-MPI-NCI-2026/D54E23E099A6AB0962843FE0603D16F8F40E7DE1DC5A0A425FE086AF8111A9A2.pygtex MPI-NCI-2026.pyg)...disabled (restricted).
+
+
+
+./MPI-NCI-2026.vrb:28: Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.28 \end{minted}
+                 
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1952.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [146
+
+]
+No file MPI-NCI-2026.bbl.
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1962.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+[147
+
+]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 1972.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+File: NCI_logo.png Graphic file (type png)
+<use NCI_logo.png>
+Package pdftex.def Info: NCI_logo.png  used on input line 1972.
+(pdftex.def)             Requested size: 66.78987pt x 28.45274pt.
+ [148
+
+]
+\tf@nav=\write9
+\openout9 = `MPI-NCI-2026.nav'.
+
+\tf@toc=\write10
+\openout10 = `MPI-NCI-2026.toc'.
+
+\tf@snm=\write11
+\openout11 = `MPI-NCI-2026.snm'.
+
+ (./MPI-NCI-2026.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `MPI-NCI-2026.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `MPI-NCI-2026.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  DB33EFF535BB92F801707C833DDDCA76;692.
+runsystem(rm MPI-NCI-2026.pyg)...disabled (restricted).
+
+ ) 
+Here is how much of TeX's memory you used:
+ 45729 strings out of 476041
+ 1058633 string characters out of 5793174
+ 1876388 words of memory out of 6000000
+ 64879 multiletter control sequences out of 15000+600000
+ 617191 words of font info for 164 fonts, out of 8000000 for 9000
+ 1137 hyphenation exceptions out of 8191
+ 128i,22n,122p,821b,690s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on MPI-NCI-2026.pdf (148 pages, 1332384 bytes).
+PDF statistics:
+ 4799 PDF objects out of 5155 (max. 8388607)
+ 4179 compressed objects within 42 object streams
+ 307 named destinations out of 1000 (max. 500000)
+ 2197 words of extra memory for PDF output out of 10000 (max. 10000000)
+

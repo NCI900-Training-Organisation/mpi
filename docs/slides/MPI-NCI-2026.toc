@@ -1,0 +1,6 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Point-to-point communication}{55}{0}{1}
+\beamer@sectionintoc {2}{Collective communication}{96}{0}{2}
+\beamer@sectionintoc {3}{One-sided Communication}{113}{0}{3}
+\beamer@sectionintoc {4}{MPI Profiler}{129}{0}{4}
+\beamer@sectionintoc {5}{MPI-IO}{135}{0}{5}

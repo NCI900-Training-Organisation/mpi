@@ -3,29 +3,18 @@
 # -- Project information
 
 project = 'Introduction to MPI'
-copyright = '2024, National Computational Infrastructure'
+copyright = '2026, National Computational Infrastructure'
 author = 'NCI Training'
 
-release = '0.1'
-version = '0.1.0'
+release = '2026'
+version = '2026'
 
 # -- General configuration
 
 extensions = [
     'sphinx.ext.duration',
-    'sphinx.ext.doctest',
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.intersphinx',
+    'sphinx.ext.mathjax',
 ]
-
-intersphinx_mapping = {
-    'python': ('https://docs.python.org/3/', None),
-    'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
-}
-intersphinx_disabled_domains = ['std']
-
-templates_path = ['_templates']
 
 # -- Options for HTML output
 

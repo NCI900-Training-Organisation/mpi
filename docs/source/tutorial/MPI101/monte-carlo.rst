@@ -1,62 +1,49 @@
-Example: Monte-carlo Approximation of Pi
-------------------
-
-.. admonition:: Overview
-    :class: Overview
-
-    * **Tutorial:** 20 min
-
-        **Objectives:**
-            #. Learn how to use MPI to approximate Pi using the Monte Carlo method.
-
-**Monte Carlo Method:** The Monte Carlo method is a statistical technique used to estimate the value of an unknown quantity using random sampling.
-In this example, we generate :math:`N` random sampling points within a square, and count the number :math:`h` of samples that fall in the unit circle. Then the approximation of :math:`\pi` is given by: :math:`4h/N`.
-
-.. image:: ../../figures/Monte-Carlo01.jpg
-
-A serial implementation of the Monte Carlo method to approximate Pi may look like the following:
-
-.. code-block:: c
-    :linenos:
-
-    seed = 1; // seed for random number generator 
-    for (i=0; i<N; i++) {
-        x = (double)rand_r(&seed)/(double)RAND_MAX; // RAND_MAX to normalise 
-        y = (double)rand_r(&seed)/(double)RAND_MAX;
-
-        if (x*x + y*y <= 1.0) h++; 
-    }
+Monte Carlo approximation of pi
+===============================
 
 
-**Parallel Monte Carlo Pi Approximation:** To parallelise the Monte Carlo method, we can divide the work among multiple processors. Each processor generates a subset of the total random samples and counts the number of samples that fall within the unit circle. The final approximation of Pi is obtained by summing the counts from all processors and dividing by the total number of samples. 
+Generate points uniformly in the unit square and count the ones inside the
+quarter-circle :math:`x^2+y^2\leq1`. For :math:`H` hits out of :math:`N` samples,
+:math:`\pi\approx4H/N`.
 
-Our first MPI code will look like this:
+.. figure:: ../../figures/Monte-Carlo01.jpg
+   :alt: Random points inside and outside a circle used to estimate pi.
+   :width: 60%
 
-.. code-block:: c
-    :linenos:
+   Counting random samples estimates the circle's area.
 
-    #include<mpi.h>
+Rank ``rank`` handles the integer range from ``rank * N / size`` to
+``(rank + 1) * N / size`` (exclusive). Initialise each rank's random seed once
+before its loop, then advance the generator for each sample. Resetting the
+seed on every iteration repeats the same samples.
 
-    int rank, size;
-    int count=0, count_tot=0;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank); // get the rank of the process
-    MPI_Comm_size(MPI_COMM_WORLD, &size); // get the total number of processes
+After local sampling, all ranks call ``MPI_Reduce`` once with ``MPI_SUM``.
+Rank 0 converts the combined hit count into an estimate of pi. Sampling is
+independent across ranks; only the final count needs communication.
 
-    int start = rank * N /size; // the start index of the samples for this process
-    int end = (rank+1) * N /size; // the end index of the samples for this process
+.. _exercise-1-1:
 
-    for (i=start; i<end; i++) {
-        x = (double)rand_r(&seed)/(double)RAND_MAX; 
-        y = (double)rand_r(&seed)/(double)RAND_MAX;
+Exercise 1.1: Read and run your first MPI program
+-------------------------------------------------
 
-        if (x*x + y*y <= 1.0) count++; 
+.. admonition:: STOP HERE -- Exercise 1.1
+   :class: important
 
-        // sum the counts from all processes        
-        MPI_Reduce(*count, &count_tot, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
-    }
+   **Open and read:** :download:`day1/MC_pi.c <../../../../day1/MC_pi.c>` No edits are required.
 
-.. note::
-    The user organises the copies of data for each parallel process.
 
-In 
+   #. Locate initialisation, rank/size queries, and finalisation.
+   #. Explain the sample ranges and seed placement.
+   #. Identify the local count and final reduction.
+   #. Predict which ranks produce each printed line.
 
+Run from ``day1/``:
+
+.. code-block:: bash
+
+    make MC
+    mpiexec -np 4 ./MC_pi
+
+**Checkpoint:** the program finishes, rank 0 reports an estimate near pi,
+and every rank reports a runtime. Estimates and print order can vary.
+Continue to :doc:`model_problem`.
