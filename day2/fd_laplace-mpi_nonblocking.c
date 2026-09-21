@@ -58,26 +58,8 @@ void init_mesh(const int mesh_size,
                int *ptr_rows)
 {
 
-/* relocate mem for the last rank (top slab) as it includes the extra_size work */
+/* Initialise the top slab, including any remaining interior rows. */
 if (rank == (cells -1) ) {
-    double (*tmp1)[mesh_size] = realloc(submesh, sizeof *submesh * *ptr_rows);
-    double (*tmp2)[mesh_size] = realloc(submesh_new, sizeof *submesh_new * *ptr_rows);
-    double (*tmp3)[mesh_size] = realloc(subrhs, sizeof *submesh * *ptr_rows);
-    printf("mem alloc %d\n",*ptr_rows);
-
-    if (tmp1 == NULL || tmp2 == NULL || tmp3 == NULL){
-
-        printf("Reallocation fails");
-        exit(0);
-    }
-
-    else{
-
-        submesh =tmp1;
-        submesh_new = tmp2;
-        subrhs = tmp3;
-    }
-    
     double x_coord, y_coord;
 
     /* initialise interior submesh values on the last rank */

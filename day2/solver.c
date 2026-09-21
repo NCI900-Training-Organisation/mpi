@@ -20,7 +20,7 @@ Frederick Fung 2022
 double local_L2_residual(const int *ptr_to_rows, int mesh_size, double space, const double *restrict ptr_submesh, const double *restrict ptr_subrhs)
 {
     
-    /* discrete L2 norm of the residual by a given approximation */
+    /* Local sum of squares of h^2 * (Au - f); reduce, then take sqrt. */
     double residual = 0.0f;
 
       for (int i = 1; i< *ptr_to_rows -1; i++){
@@ -88,6 +88,7 @@ void Jacobi_top(int *ptr_to_rows, int mesh_size,  double *restrict ptr_submesh, 
 
 void Jacobi_bottom(int *ptr_to_rows, int mesh_size,  double *restrict ptr_submesh,  double *restrict ptr_submesh_new,  const double *restrict ptr_rhs, double space)
 {
+    (void)ptr_to_rows;
     
     int i = 1;
 

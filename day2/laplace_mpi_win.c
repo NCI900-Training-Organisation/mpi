@@ -4,15 +4,14 @@ laplace_mpi_win.c
 Solve a model 2D Poisson equaton with Dirichlet boundary condition.
 
 -Delta u = 2pi^2 * sin(pi x)sin(pi y) in [0,1]^2
-       u = sin(pi x) sin(y) on boundary
+       u = sin(pi x) sin(pi y) on boundary
 
 The problem is discretised over a uniform mesh by finite difference 
-method and the resulting linear system is solved by choices of Jacobi
-or Gauss-Seidel.
+method and the resulting linear system is solved by Jacobi iteration.
 
 Compile:  mpicc -g -Wall -O3 -o laplace_mpi_win laplace_mpi_win.c mesh.c solver.c -lm
 
-Usage:  mpirun -np 4 ./laplace_mpi_win size max_iter method
+Usage:  mpirun -np 4 ./laplace_mpi_win mesh_size max_iter Jacobi
 
 Produced for NCI Training. 
 
@@ -26,6 +25,8 @@ Please leave comments at frederick.fung@anu.edu.au
 #include<string.h>
 #include<math.h>
 #include<mpi.h>
+#include <errno.h>
+#include <limits.h>
 #include "mesh.h"
 #include "solver.h"
 
@@ -42,65 +43,41 @@ MPI_Comm_rank(world, &rank);
 
 MPI_Comm_size(world, &cells);
 
-int mesh_size, max_iter; 
-
-double space;
-
-char *method;
-
-/* build MPI_Datatype arg */
-int blocklength[3] = {1, 1, 1};
-MPI_Datatype type_list[3] = {MPI_INT, MPI_INT, MPI_DOUBLE};
-MPI_Aint displacements[3];
-MPI_Aint A_mesh_size, A_max_iter, A_space;
-MPI_Datatype arg;
-
-MPI_Get_address(&mesh_size, &A_mesh_size);
-MPI_Get_address(&max_iter, &A_max_iter);
-MPI_Get_address(&space, &A_space);
-
-displacements[2] = A_space - A_max_iter;
-displacements[1] = A_max_iter - A_mesh_size;
-displacements[0] = 0;
-
-MPI_Type_create_struct(3, blocklength, displacements, type_list, &arg);
-MPI_Type_commit(&arg);
-
-
-
-/* parse arguments on process 0 */
-if (rank == 0){
-    if (argc == 4){
-
-    mesh_size = atof(argv[1]);
-
-    max_iter = atof(argv[2]);
-
-    method = argv[3];
-    
-    /* Broadcast args to the rest of processes */
-    MPI_Bcast(&mesh_size, 1, arg, 0, world);
-     
-    if ((strcmp(method, "Jacobi") == 0)){
-        printf("%s METHOD IS IN USE   \n ", method); }
-    else {    
-        printf( "Not a valid method\n");
-        MPI_Finalize();
-        exit(1);
-         }
+/* Rank 0 validates input; all ranks take the same success or failure path. */
+int args[2] = {0, 0}; /* mesh_size, max_iter */
+int valid = 1;
+if (rank == 0) {
+    valid = argc == 4 && strcmp(argv[3], "Jacobi") == 0;
+    if (valid) {
+        for (int i = 0; i < 2; i++) {
+            char *end;
+            errno = 0;
+            long value = strtol(argv[i + 1], &end, 10);
+            if (errno != 0 || end == argv[i + 1] || *end != '\0' ||
+                value < 0 || value > INT_MAX) {
+                valid = 0;
+                break;
+            }
+            args[i] = (int)value;
+        }
+        /* The split Jacobi update requires at least two owned rows per rank. */
+        valid = valid && args[0] >= 4 && (args[0] - 2) / cells >= 2;
     }
-    else {
-        printf("Usage: %s [size] [max_iter] [method] \n", argv[0]);
-        MPI_Finalize();
-        exit(1);
+    if (!valid) {
+        fprintf(stderr, "Usage: %s [mesh_size] [max_iter] Jacobi\n"
+                "Use integer values, max_iter >= 0, and at least two interior rows per rank.\n",
+                argv[0]);
     }
 }
-else {
-    MPI_Bcast(&mesh_size, 1, arg, 0, world);
+MPI_Bcast(&valid, 1, MPI_INT, 0, world);
+if (!valid) {
+    MPI_Finalize();
+    return EXIT_FAILURE;
 }
-
-/* grid spacing */
-space = (double) 1 / (mesh_size-1);
+MPI_Bcast(args, 2, MPI_INT, 0, world);
+int mesh_size = args[0], max_iter = args[1];
+double space = 1.0 / (mesh_size - 1);
+if (rank == 0) printf("Jacobi METHOD IS IN USE\n");
 
 /* number of interior rows in each cell */
 int int_rows = (mesh_size -2) / cells ;
@@ -121,7 +98,6 @@ if (rank == (cells - 1)) ptr_rows = &rows_top;
 
 else ptr_rows = &rows;
 
-if (rows <= 3) MPI_Abort(MPI_COMM_WORLD, 1); /* add error handling */ 
 
 /* alloc mem for meshes held in each cell */
 double (*submesh)[mesh_size] = malloc(sizeof *submesh * *ptr_rows);
@@ -131,6 +107,11 @@ double (*submesh_new)[mesh_size] = malloc(sizeof *submesh_new * *ptr_rows);
 
 /* alloc mem for rhs held in each cell */
 double (*subrhs)[mesh_size] = malloc(sizeof *subrhs * *ptr_rows);
+if (submesh == NULL || submesh_new == NULL || subrhs == NULL) {
+    fprintf(stderr, "Mesh allocation failed on rank %d\n", rank);
+    MPI_Abort(world, EXIT_FAILURE);
+}
+
 
 init_mesh(mesh_size, submesh, submesh_new, subrhs, rank, cells, int_rows, space, ptr_rows);
 
@@ -155,7 +136,7 @@ if (higher >= cells) higher = MPI_PROC_NULL;
 int lower = rank -1;
 if (lower < 0) lower = MPI_PROC_NULL;
 
-unsigned iter = 0;
+int iter = 0;
 while (iter<max_iter)
 {
     iter+=1;
@@ -171,22 +152,14 @@ while (iter<max_iter)
     MPI_Win_fence(0, lower_win);
     
     /* update the full bottom and top of submesh */
-    if (rank > 0 && rank < (cells -1)){
-        for (int i=0; i< mesh_size; i++){
-            submesh[0][i] = lower_bnd[i]; /* bottom */
-            submesh[*ptr_rows-1][i] = upper_bnd[i]; /* top */            
-    }
-    }
-    else if (rank ==0 ){ /* bottom rank only updates its top full row */
-        for (int i = 0; i< mesh_size; i++ ){
-
-            submesh[*ptr_rows-1][i] = upper_bnd[i];
+    if (lower != MPI_PROC_NULL) {
+        for (int i = 0; i < mesh_size; i++) {
+            submesh[0][i] = lower_bnd[i];
         }
     }
-
-    else if (rank == (cells -1) ){ /* top rank only updates its bottom full row */ 
-        for (int i = 0; i <mesh_size; i++){
-            submesh[0][i] = lower_bnd[i];
+    if (higher != MPI_PROC_NULL) {
+        for (int i = 0; i < mesh_size; i++) {
+            submesh[*ptr_rows - 1][i] = upper_bnd[i];
         }
     }
 
@@ -195,6 +168,8 @@ while (iter<max_iter)
 
 MPI_Win_free(&upper_win);
 MPI_Win_free(&lower_win);
+MPI_Free_mem(upper_bnd);
+MPI_Free_mem(lower_bnd);
 
 /* sync after solving the problem on each cell */
 int highertag=1, lowertag=2;
